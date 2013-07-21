@@ -1,0 +1,58 @@
+[
+	{
+		"trigger":
+		{
+			"path":"barcode.js", 
+			"name":"scan", 
+			"params":{"hidraw":"/dev/hidraw1"}
+		}, 
+		"action":
+		{
+			"path":"http.js", 
+			"name":"get",
+			"params":{"url":"http://home/api/stock/decrease/barcode/{data}"}
+		}
+	},
+	{
+		"trigger":
+		{
+			"path":"date.js", 
+			"name":"Tous les levers/coucher de soleils", 
+			"params":{"lat":47.740001,"lng":7.28855967, "tz":1, "rise/set":"set"}
+		}, 
+		"action":
+		{
+			"path":"http.js", 
+            "name":"get",
+			"params":{"url":"http://home/api/gpio-blaster/down/4"}
+		}
+	},
+    {
+		"trigger":
+		{
+			"path":"date.js", 
+			"name":"Toutes les semaines à", 
+			"params":{"hour":8,"minute":30, "day":[1,2,3,4,5]}
+		}, 
+		"action":
+		{
+			"path":"http.js", 
+            "name":"get",
+			"params":{"url":"http://home/api/gpio-blaster/up/4"}
+		}
+	},
+    {
+    	"trigger":
+		{
+			"path":"date.js", 
+			"name":"Toutes les semaines à", 
+			"params":{"hour":11,"minute":30, "day":[0,6]}
+		}, 
+		"action":
+		{
+			"path":"http.js", 
+            "name":"get",
+			"params":{"url":"http://home/api/gpio-blaster/up/4"}
+		}
+	}
+]
