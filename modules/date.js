@@ -448,26 +448,26 @@ function getTarget(fields, target){
         target.setMilliseconds(0);
     }
 		
-	if(fields.minute)
+	if(typeof(fields.minute)!='undefined')
 		target.setMinutes(fields.minute);
-	if(fields.hour)
+	if(typeof(fields.hour)!='undefined')
     {
 		target.setHours(fields.hour);
         if(target<new Date())
             target.setDate(target.getDate()+1);
     }
-	else if(fields.minute && target.getMinutes()<fields.minute)
+	else if(typeof(fields.minute)!='undefined' && target.getMinutes()<fields.minute)
 		target.setHours(target.getHours()+1);
-	if(fields.day)
+	if(typeof(fields.day)!='undefined')
 	{
 		while($.grep(fields.day||[0,1,2,3,4,5,6], function(element){ return element==target.getDay()}).length===0)
 		{
 			target.setDate(target.getDate()+1);
 		}
 	}
-	else if(fields.hour && target.getHours()<fields.hour)
+	else if(typeof(fields.hour)!='undefined' && target.getHours()<fields.hour)
 		target.setDate(target.getDate()+1);
-	if(fields['rise/set'])
+	if(typeof(fields['rise/set'])!='undefined')
     {
         target=calcSunriseSet(fields['rise/set']=='rise'?1:0, getJD(target), fields.lat, fields.lng, fields.tz, IsDST(target.getDay(), target.getMonth(), target.getDate()), target);
         if(target<new Date())
@@ -476,7 +476,7 @@ function getTarget(fields, target){
             return getTarget(fields, target);
         }
     }
-	if(fields.date)
+	if(typeof(fields.date)!='undefined')
 	{
 		if(fields.date<=28)
 			target.setDate(fields.date);
@@ -489,13 +489,13 @@ function getTarget(fields, target){
 			target.setDate(lastDate.getDate());
 		}
 	}
-	if(fields.month)
+	if(typeof(fields.month)!='undefined')
 	{
 		target.setMonth(fields.month);
 		if(target.getMonth()>fields.month)
 			target.setFullYear(target.getFullYear()+1);
 	}
-	else if(fields.date && target.getDate()<fields.date)
+	else if(typeof(fields.date)!='undefined' && target.getDate()<fields.date)
 		target.setMonth(target.getMonth()+1);
 
     if(fields.exceptions)

@@ -1,4 +1,4 @@
-require('./jnode/setup.js');
+require('jnode/setup.js');
 
 var channels={};
 global.ifttt={};

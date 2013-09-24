@@ -28,11 +28,25 @@
 		}
 	},
     {
+        "trigger":
+		{
+			"path":"date.js", 
+			"name":"Toutes les semaines à", 
+			"params":{"hour":6,"minute":0, "day":[1,2,3,4,5]}
+		}, 
+		"action":
+		{
+			"path":"http.js", 
+            "name":"get",
+			"params":{"url":"http://home/api/pc"}
+		}
+	},
+    {
 		"trigger":
 		{
 			"path":"date.js", 
 			"name":"Toutes les semaines à", 
-			"params":{"hour":8,"minute":30, "day":[1,2,3,4,5]}
+			"params":{"hour":7,"minute":30, "day":[1]}
 		}, 
 		"action":
 		{
@@ -42,7 +56,7 @@
 		}
 	},
     {
-    	"trigger":
+        "trigger":
 		{
 			"path":"date.js", 
 			"name":"Toutes les semaines à", 
@@ -54,5 +68,20 @@
             "name":"get",
 			"params":{"url":"http://home/api/gpio-blaster/up/4"}
 		}
+	},
+    {
+        "trigger":
+		{
+			"path":"date.js", 
+			"name":"Toutes les semaines à", 
+			"params":{"hour":5,"minute":30, "day":[0,6]}
+		}, 
+		"action":
+		{
+			"path":"http.js", 
+            "name":"get",
+			"params":{"url":"http://home/api/gpio-blaster/down/4"}
+		}
 	}
+
 ]
