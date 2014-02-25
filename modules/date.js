@@ -517,10 +517,15 @@ function getTarget(fields, target){
 }
 
 function intervaller(fields, callback){
-	setTimeout(function(){
+    
+	var timeOut=setTimeout(function(){
 		intervaller(fields, callback);
 		callback(fields);
 	}, getTarget(fields).getTime()-new Date().getTime());
+	
+	process.on('exit',function(){
+        clearTimeout(timeOut);
+	});
 }
 
 module.exports={"name":"date", "triggers":[

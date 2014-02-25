@@ -1,7 +1,16 @@
-module.exports={name:"console", "triggers":[{name:"scan",fields:[{name:"hidraw", displayName:"Which input should be watched"}], when:function(fields,callback){
+module.exports={name:"barcode", "triggers":[{name:"scan",fields:[{name:"hidraw", displayName:"Which input should be watched"}], when:function(fields,callback){
 	var barcode='';
 
-	$('fs').createReadStream(fields.hidraw).on('data', function(data){			
+    var stream=$('fs').createReadStream(fields.hidraw);
+
+	process.on('preexit', function(){
+        console.log('destroying stream');
+        stream.removeAllListeners('data');
+        stream.unpipe();
+        stream.destroy();
+	});
+	
+	stream.on('data', function(data){			
 			for(var i in data)
 			{
 				var digit=-1;
@@ -29,4 +38,4 @@ module.exports={name:"console", "triggers":[{name:"scan",fields:[{name:"hidraw",
 			}
 		});
 	}
-}], "actions":[]}
+}], "actions":[]};

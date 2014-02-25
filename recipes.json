@@ -1,5 +1,6 @@
 [
 	{
+	    "name":"stock",
 		"trigger":
 		{
 			"path":"barcode.js", 
@@ -14,6 +15,7 @@
 		}
 	},
 	{
+	    "name":"fermeture des volets",
 		"trigger":
 		{
 			"path":"date.js", 
@@ -28,34 +30,23 @@
 		}
 	},
     {
-        "trigger":
-		{
-			"path":"date.js", 
-			"name":"Toutes les semaines à", 
-			"params":{"hour":6,"minute":0, "day":[1,2,3,4,5]}
-		}, 
-		"action":
-		{
-			"path":"http.js", 
-            "name":"get",
-			"params":{"url":"http://home/api/pc"}
-		}
-	},
-    {
+        "name":"ouverture des volets (semaine)",
+        "disabled":false,
 		"trigger":
 		{
 			"path":"date.js", 
 			"name":"Toutes les semaines à", 
-			"params":{"hour":7,"minute":30, "day":[1]}
+			"params":{"hour":7,"minute":30, "day":[1,2,3,4,5]}
 		}, 
 		"action":
 		{
 			"path":"http.js", 
             "name":"get",
-			"params":{"url":"http://home/api/gpio-blaster/up/4"}
+			"params":{"url":"http://home/api/gpio-blaster/up/1"}
 		}
 	},
     {
+        "name":"ouverture des volets (week-end)",
         "trigger":
 		{
 			"path":"date.js", 
@@ -70,6 +61,7 @@
 		}
 	},
     {
+        "name":"fermeture des volets (été)",
         "trigger":
 		{
 			"path":"date.js", 
@@ -82,6 +74,72 @@
             "name":"get",
 			"params":{"url":"http://home/api/gpio-blaster/down/4"}
 		}
-	}
-
+	},
+    {
+        "name":"détection de mouvements",
+        "trigger":
+        {
+            "path":"jabber.js",
+            "name":"motion-detected",
+            "params":
+            {
+                "port":5222,
+                "host":"192.168.68.10",
+                "username":"admin",
+                "password":"dragon-angel"
+            }
+        },
+        "action":
+        {
+            "path":"socket.io.js",
+            "name":"emit",
+            "params":{"eventName":"message", "function":"\\{ \"text\":\"Un mouvement vient d'être detecté à {date}\", \"image\":\"data:image/png;{encoding},{picture} \\}"}
+        }
+    },
+    {
+        "name":"IPC",
+        "trigger":
+        {
+            "path":"socket.io.js",
+            "name":"on",
+            "params":{"eventName":"ifttt"}
+        },
+        "action":
+        {
+            "path":"script.js",
+            "name":"run",
+            "params":{"script":"./ifttt-commander.js", "function":"{message.cmd}", "args":"{message.params}"}
+        }
+    },
+    {
+        "name":"restart on recipe change",
+        "disabled":true,
+        "trigger":
+        {
+            "path":"file.js",
+            "name":"change",
+            "params":{"name":"./recipes.json"}
+        },
+        "action":
+        {
+            "path":"script.js",
+            "name":"run",
+            "params":{"script":"./ifttt-commander.js", "function":"restart"}
+        }
+    },
+    {
+        "name":"EPG",
+        "trigger":
+        {
+            "path":"date.js",
+ 			"name":"Toutes les semaines à", 
+			"params":{"hour":0,"minute":0, "day":[1]}
+       },
+        "action":
+        {
+            "path":"http.js",
+            "name":"download",
+            "params":{"url":"http://www.kazer.org/tvguide.xml?u=qbezj9unq9g89", "file":"/home/pi/domojs/epg.xml"}
+        }
+    }
 ]

@@ -1,5 +1,5 @@
-require('jnode/setup.js');
-
+require('domojs/node_modules/jnode/setup.js');
+process.preventNextOccurrences=[];
 var channels={};
 global.ifttt={};
 function loadChannel(path)
@@ -33,6 +33,7 @@ var context=this;
 function that(fields, trigger)
 {
 	var params={};
+	console.log(this.fields);
 	$.each(this.fields, function(index){
 		if(typeof(index)=='string')
 			params[index]=$('router/formatter.js')(this)(fields);
@@ -64,26 +65,49 @@ function register(recipe){
 	var actionChannel=loadChannel(recipe.action.path);
 	var action=find(actionChannel.actions, recipe.action.name).delegate.call(actionChannel, recipe.action.params);
 		
+    console.log(recipe.trigger.path);
+    console.log(recipe.trigger.name);
 	var trigger=find(triggerChannel.triggers, recipe.trigger.name);
 	if(trigger.delegate)
 	{
 		trigger=trigger.delegate.call(triggerChannel, recipe.trigger.params);
 		var raiser=new OnceAMinuteEmitter();
 	
-		raiser.on('trigger', function(fields){ that.call(action, fields, trigger) });
+		raiser.on('trigger', function(fields) 
+        {
+            var index=process.preventNextOccurrences.indexOf(recipe.name);
+            if(index>-1)
+                process.preventNextOccurrences.splice(index,1);
+            else
+                that.call(action,fields,trigger);
+        });
+
+        var stop=false;
+        process.on('preexit', function(){
+            stop=true;
+        });
 
 		(function loop()
 		{
 			if(trigger.call(triggerChannel, raiser))
 				raiser.emit('trigger', trigger.fields);
 
-			setImmediate(loop);
+            if(!stop)
+			    setImmediate(loop);
 		})();
 	}
 	else
-		trigger.when.call(triggerChannel, recipe.trigger.params, function(fields) { that.call(action,fields,trigger); });
+		trigger.when.call(triggerChannel, recipe.trigger.params, function(fields) 
+        {
+            var index=process.preventNextOccurrences.indexOf(recipe.name);
+            if(index>-1)
+                process.preventNextOccurrences.splice(index,1);
+            else
+                that.call(action,fields,trigger);
+        });
 
 }
 
 var recipes=$('./recipes.json');
-$.each(recipes, function(){ register(this); });
+$.each(recipes, function(){ if(!this.disabled) register(this); });
+console.log('initialized');
