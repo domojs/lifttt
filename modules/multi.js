@@ -1,4 +1,5 @@
-var parent=ifttt;
+
+var parent=global.ifttt||{};
 
 module.exports={"name":"multi", "triggers":[
 {"name":"L'un ou l'autre", fields:[{ "name":"triggers", "displayName":"Evenements"}], "delegate":function(fields){

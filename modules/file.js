@@ -5,7 +5,11 @@ module.exports={name:"file", "triggers":[{
         $('fs').watchFile(fields.name, { persistent:false,interval:5007 },callback);
     }
 }], "actions":[{name:"writeFile", fields:[{name:"name", displayName:"Nom"}, {name:"content", displayName:"contenu"}, {name:"encoding", displayName:"Encoding"}], delegate:function(params){
-	return function(fields){
-		$('fs').writeFile(params['name'], params['content'], fields['encoding']);
+	return function(fields, trigger, complete){
+		$('fs').writeFile(params['name'], params['content'], fields['encoding'], complete);
+	};
+}},{name:"appendFile", fields:[{name:"name", displayName:"Nom"}, {name:"content", displayName:"contenu"}, {name:"encoding", displayName:"Encoding"}], delegate:function(params){
+	return function(fields, trigger, complete){
+		$('fs').appendFile(params['name'], params['content'], fields['encoding'], complete);
 	};
 }}]}

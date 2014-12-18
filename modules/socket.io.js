@@ -1,4 +1,4 @@
-var io=$('socket.io-client').connect('http://localhost');
+var io=$('socket.io-client').connect('http://home.dragon-angel.fr');
 
 module.exports={
     name:"socket.io", 
@@ -25,6 +25,7 @@ module.exports={
             fields:[{name:"eventName", displayName:"the name of the event to trigger"}, {name:"data", displayName:"The data to transmit"}],
             delegate:function(fields){
                 var result=function(fields){
+                    console.log('emitting '+fields.eventName+' with message '+JSON.stringify(fields.data));
                     io.emit(fields.eventName, fields.data);
                 };
                 result.fields=fields;

@@ -13,9 +13,9 @@ function loadChannel(path)
 }
 
 ifttt.loadChannel=loadChannel;
-ifttt.that=function(action, fields, trigger)
+ifttt.that=function(action, fields, trigger, completed)
 {
-	that.call(action, fields, trigger);
+	that.call(action, fields, trigger, completed);
 };
 
 function find(list, name)
@@ -30,7 +30,7 @@ function find(list, name)
 
 var context=this;
 
-function that(fields, trigger)
+function that(fields, trigger, next)
 {
 	var params={};
 	console.log(this.fields);
@@ -38,7 +38,7 @@ function that(fields, trigger)
 		if(typeof(index)=='string')
 			params[index]=$('router/formatter.js')(this)(fields);
 	});
-	return this(params, trigger);
+	return this(params, trigger, next);
 }
 
 var EventEmitter=$('events').EventEmitter;
@@ -73,13 +73,13 @@ function register(recipe){
 		trigger=trigger.delegate.call(triggerChannel, recipe.trigger.params);
 		var raiser=new OnceAMinuteEmitter();
 	
-		raiser.on('trigger', function(fields) 
+		raiser.on('trigger', function(fields, completed) 
         {
             var index=process.preventNextOccurrences.indexOf(recipe.name);
             if(index>-1)
                 process.preventNextOccurrences.splice(index,1);
             else
-                that.call(action,fields,trigger);
+                that.call(action,fields,trigger, completed);
         });
 
         var stop=false;
@@ -97,13 +97,13 @@ function register(recipe){
 		})();
 	}
 	else
-		trigger.when.call(triggerChannel, recipe.trigger.params, function(fields) 
+		trigger.when.call(triggerChannel, recipe.trigger.params, function(fields, completed) 
         {
             var index=process.preventNextOccurrences.indexOf(recipe.name);
             if(index>-1)
                 process.preventNextOccurrences.splice(index,1);
             else
-                that.call(action,fields,trigger);
+                that.call(action,fields,trigger, completed);
         });
 
 }
