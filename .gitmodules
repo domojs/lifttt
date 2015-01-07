@@ -43,3 +43,6 @@
 [submodule "modules/twitter"]
 	path = modules/twitter
 	url = https://github.com/npenin/lifttt-twitter
+[submodule "modules/sendgrid"]
+	path = modules/sendgrid
+	url = https://github.com/npenin/lifttt-sendgrid
