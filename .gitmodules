@@ -31,9 +31,6 @@
 [submodule "lifttt-script"]
 	path = modules/script
 	url = https://github.com/npenin/lifttt-script
-[submodule "lifttt-sendgrid"]
-	path = modules/sendgrid
-	url = https://github.com/npenin/lifttt-sendgrid
 [submodule "lifttt-socket.io"]
 	path = modules/socket.io
 	url = https://github.com/npenin/lifttt-socket.io
