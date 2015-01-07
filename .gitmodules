@@ -1,0 +1,45 @@
+[submodule "modules/barcode"]
+	path = modules/barcode
+	url = https://github.com/npenin/lifttt-barcode
+[submodule "modules/boxcar"]
+	path = modules/boxcar
+	url = https://github.com/npenin/lifttt-boxcar
+[submodule "modules/caldav"]
+	path = modules/caldav
+	url = https://github.com/npenin/lifttt-caldav
+[submodule "modules/console"]
+	path = modules/console
+	url = https://github.com/npenin/lifttt-console
+[submodule "modules/date"]
+	path = modules/date
+	url = https://github.com/npenin/lifttt-date
+[submodule "modules/file"]
+	path = modules/file
+	url = https://github.com/npenin/lifttt-file
+[submodule "modules/http"]
+	path = modules/http
+	url = https://github.com/npenin/lifttt-http
+[submodule "modules/jabber"]
+	path = modules/jabber
+	url = https://github.com/npenin/lifttt-jabber
+[submodule "modules/multi"]
+	path = modules/multi
+	url = https://github.com/npenin/lifttt-multi
+[submodule "modules/redis"]
+	path = modules/redis
+	url = https://github.com/npenin/lifttt-redis
+[submodule "modules/script"]
+	path = modules/script
+	url = https://github.com/npenin/lifttt-script
+[submodule "modules/socket.io"]
+	path = modules/socket.io
+	url = https://github.com/npenin/lifttt-socket.io
+[submodule "modules/telnet"]
+	path = modules/telnet
+	url = https://github.com/npenin/lifttt-telnet
+[submodule "modules/transmission"]
+	path = modules/transmission
+	url = https://github.com/npenin/lifttt-transmission
+[submodule "modules/twitter"]
+	path = modules/twitter
+	url = https://github.com/npenin/lifttt-twitter
