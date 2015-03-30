@@ -1,14 +1,50 @@
-require('domojs/node_modules/jnode/setup.js');
+require('../node_modules/jnode/setup.js');
 process.preventNextOccurrences=[];
 var channels={};
 global.ifttt={};
 function loadChannel(path)
 {
 	if(typeof(channels[path])=='undefined')
-		channels[path] = $.extend($('./modules/'+path), {find:function(name, type){
+		channels[path] = $.extend(require('./modules/'+path), {find:function(name, type){
 			type=type || 'trigger';
-			console.log('loading '+type+' '+name);
-		return find(this[type+'s'], name); }, register:register});
+		console.log('loading '+type+' '+name);
+		var result= find(this[type+'s'], name); 
+		if(result && type=='trigger' && result.delegate)
+		{
+            var triggerChannel=this;
+            result.when=function(fields, completed)
+            {
+                trigger=result.delegate.call(triggerChannel, recipe.trigger.params);
+                var raiser=new OnceAMinuteEmitter();
+                
+                var precompleted=function(fields) 
+                {
+                    var index=process.preventNextOccurrences.indexOf(recipe.name);
+                    if(index>-1)
+                        process.preventNextOccurrences.splice(index,1);
+                    else
+                        that.call(action,fields,trigger, completed);
+                };
+                
+                raiser.on('trigger', precompleted);
+        
+                var stop=false;
+                process.on('preexit', function(){
+                    stop=true;
+                });
+        
+                (function loop()
+                {
+                    if(trigger.call(triggerChannel, raiser, precompleted))
+                        raiser.emit('trigger', trigger.fields);
+                
+                    if(!stop)
+                        setImmediate(loop);
+                })();
+            };
+		}
+		return result;
+		}, register:register});
 	return channels[path];
 }
 
@@ -20,10 +56,10 @@ ifttt.that=function(action, fields, trigger, completed)
 
 function find(list, name)
 {
-	list=$.grep(list, function(element){ 	
-		return element.name==name; 
-	});
-	if(list.length==0)
+    list = $.grep(list, function(element){ 	
+        return element.name==name; 
+    });
+    if(!list.length)
 		return null;
 	return list[0];
 }
@@ -34,9 +70,9 @@ function that(fields, trigger, next)
 {
 	var params={};
 	console.log(this.fields);
-	$.each(this.fields, function(index){
-		if(typeof(index)=='string')
-			params[index]=$('router/formatter.js')(this)(fields);
+	$.each(this.fields, function(index, item){
+		if(typeof(item)=='string')
+			params[index]=$('router/formatter.js')(item)(fields);
 	});
 	return this(params, trigger, next);
 }
@@ -63,51 +99,21 @@ OnceAMinuteEmitter.prototype=EventEmitter.prototype;
 function register(recipe){
 	var triggerChannel=loadChannel(recipe.trigger.path);
 	var actionChannel=loadChannel(recipe.action.path);
-	var action=find(actionChannel.actions, recipe.action.name).delegate.call(actionChannel, recipe.action.params);
+	var action=actionChannel.find(recipe.action.name, 'action').delegate.call(actionChannel, recipe.action.params);
 		
     console.log(recipe.trigger.path);
     console.log(recipe.trigger.name);
 	var trigger=find(triggerChannel.triggers, recipe.trigger.name);
-	if(trigger.delegate)
-	{
-		trigger=trigger.delegate.call(triggerChannel, recipe.trigger.params);
-		var raiser=new OnceAMinuteEmitter();
-	
-		raiser.on('trigger', function(fields, completed) 
-        {
-            var index=process.preventNextOccurrences.indexOf(recipe.name);
-            if(index>-1)
-                process.preventNextOccurrences.splice(index,1);
-            else
-                that.call(action,fields,trigger, completed);
-        });
-
-        var stop=false;
-        process.on('preexit', function(){
-            stop=true;
-        });
-
-		(function loop()
-		{
-			if(trigger.call(triggerChannel, raiser))
-				raiser.emit('trigger', trigger.fields);
-
-            if(!stop)
-			    setImmediate(loop);
-		})();
-	}
-	else
-		trigger.when.call(triggerChannel, recipe.trigger.params, function(fields, completed) 
-        {
-            var index=process.preventNextOccurrences.indexOf(recipe.name);
-            if(index>-1)
-                process.preventNextOccurrences.splice(index,1);
-            else
-                that.call(action,fields,trigger, completed);
-        });
-
+	trigger.when.call(triggerChannel, recipe.trigger.params, function(fields, completed) 
+    {
+        var index=process.preventNextOccurrences.indexOf(recipe.name);
+        if(index>-1)
+            process.preventNextOccurrences.splice(index,1);
+        else
+            that.call(action,fields,trigger, completed);
+    });
 }
 
-var recipes=$('./recipes.json');
+var recipes=require('./recipes.json');
 $.each(recipes, function(){ if(!this.disabled) register(this); });
 console.log('initialized');
