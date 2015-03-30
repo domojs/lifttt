@@ -49,4 +49,3 @@
 [submodule "modules/pushalot"]
         path = modules/pushalot
         url = git@github.com:npenin/lifttt-pushalot
-
