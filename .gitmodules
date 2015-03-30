@@ -48,4 +48,4 @@
 	url = git@github.com:npenin/lifttt-sendgrid
 [submodule "modules/pushalot"]
 	path = modules/pushalot
-	url = /npenin/pushalot
+	url = git@github.com:npenin/lifttt-pushalot
