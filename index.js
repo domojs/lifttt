@@ -49,6 +49,7 @@ function loadChannel(path)
 }
 
 ifttt.loadChannel=loadChannel;
+ifttt.mode='normal';
 ifttt.that=function(action, fields, trigger, completed)
 {
 	that.call(action, fields, trigger, completed);
@@ -70,10 +71,12 @@ function that(fields, trigger, next)
 {
 	var params={};
 	console.log(this.fields);
+	console.log(fields);
 	$.each(this.fields, function(index, item){
 		if(typeof(item)=='string')
-			params[index]=$('router/formatter.js')(item)(fields);
+			params[index]=$('jnode/node_modules/router/formatter.js')(item)(fields);
 	});
+	console.log(params);
 	return this(params, trigger, next);
 }
 
@@ -103,16 +106,25 @@ function register(recipe){
 		
     console.log(recipe.trigger.path);
     console.log(recipe.trigger.name);
+    if(typeof(recipe.mode)=='undefined')
+        recipe.mode='*';
+    if(typeof(recipe.mode)=='string')
+        recipe.mode=[recipe.mode];
+        
 	var trigger=find(triggerChannel.triggers, recipe.trigger.name);
 	trigger.when.call(triggerChannel, recipe.trigger.params, function(fields, completed) 
     {
         var index=process.preventNextOccurrences.indexOf(recipe.name);
+        console.log(ifttt.mode);
+        console.log(recipe.mode);
         if(index>-1)
             process.preventNextOccurrences.splice(index,1);
-        else
+        else if(recipe.mode.indexOf(ifttt.mode)>-1 || recipe.mode.indexOf('*')>-1)
             that.call(action,fields,trigger, completed);
     });
 }
+
+process.setMaxListeners(30);
 
 var recipes=require('./recipes.json');
 $.each(recipes, function(){ if(!this.disabled) register(this); });

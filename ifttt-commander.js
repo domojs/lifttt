@@ -14,7 +14,7 @@ exports.enable=function(name)
     $.each(matchingRecipes, function(index, recipe){ recipe.disabled=false; });
     $('fs').writeFileSync("./recipes.json", JSON.stringify(recipes));
     exports.restart();
-}
+};
 
 exports.disable=function(name)
 {
@@ -23,4 +23,9 @@ exports.disable=function(name)
     $.each(matchingRecipes, function(index, recipe){ recipe.disabled=true; });
     $('fs').writeFileSync("./recipes.json", JSON.stringify(recipes));
     exports.restart();
-}
+};
+
+exports.mode=function(mode)
+{
+    global.ifttt.mode=mode;
+};
