@@ -27,5 +27,6 @@ exports.disable=function(name)
 
 exports.mode=function(mode)
 {
+    console.log('setting mode to '+mode);
     global.ifttt.mode=mode;
 };

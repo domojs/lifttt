@@ -49,3 +49,6 @@
 [submodule "modules/pushalot"]
 	path = modules/pushalot
 	url = git@github.com:npenin/lifttt-pushalot
+[submodule "modules/nexmo"]
+	path = modules/nexmo
+	url = git@github.com:npenin/lifttt-nexmo.git

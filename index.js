@@ -1,4 +1,4 @@
-require('../node_modules/jnode/setup.js');
+require('jnode/setup.js');
 process.preventNextOccurrences=[];
 var channels={};
 global.ifttt={};
@@ -14,7 +14,7 @@ function loadChannel(path)
             var triggerChannel=this;
             result.when=function(fields, completed)
             {
-                trigger=result.delegate.call(triggerChannel, recipe.trigger.params);
+                trigger=result.delegate.call(triggerChannel, fields, completed);
                 var raiser=new OnceAMinuteEmitter();
                 
                 var precompleted=function(fields) 
@@ -70,13 +70,22 @@ var context=this;
 function that(fields, trigger, next)
 {
 	var params={};
-	console.log(this.fields);
-	console.log(fields);
-	$.each(this.fields, function(index, item){
-		if(typeof(item)=='string')
-			params[index]=$('jnode/node_modules/router/formatter.js')(item)(fields);
-	});
-	console.log(params);
+	//console.log(this.fields);
+	//console.log(fields);
+	var replace=function(obj, target)
+	{
+	    $.each(obj, function(index, item){
+    		if(typeof(item)=='string')
+    			target[index]=$('jnode/node_modules/router/formatter.js')(item)(fields);
+    		else if(item instanceof Object)
+    		{
+    		    //console.log('recursive format on '+index);
+    		    replace(item, target[index]={});
+    		}
+    	});
+	};
+	replace(this.fields, params)
+	//console.log(params);
 	return this(params, trigger, next);
 }
 
@@ -115,8 +124,8 @@ function register(recipe){
 	trigger.when.call(triggerChannel, recipe.trigger.params, function(fields, completed) 
     {
         var index=process.preventNextOccurrences.indexOf(recipe.name);
-        console.log(ifttt.mode);
-        console.log(recipe.mode);
+        //console.log(ifttt.mode);
+        //console.log(recipe.mode);
         if(index>-1)
             process.preventNextOccurrences.splice(index,1);
         else if(recipe.mode.indexOf(ifttt.mode)>-1 || recipe.mode.indexOf('*')>-1)
