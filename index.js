@@ -76,7 +76,7 @@ function that(fields, trigger, next)
 	{
 	    $.each(obj, function(index, item){
     		if(typeof(item)=='string')
-    			target[index]=$('jnode/node_modules/router/formatter.js')(item)(fields);
+    			target[index]=$('router/formatter.js')(item)(fields);
     		else if(item instanceof Object)
     		{
     		    //console.log('recursive format on '+index);
@@ -85,7 +85,7 @@ function that(fields, trigger, next)
     	});
 	};
 	replace(this.fields, params)
-	//console.log(params);
+	console.log(params);
 	return this(params, trigger, next);
 }
 
@@ -124,8 +124,8 @@ function register(recipe){
 	trigger.when.call(triggerChannel, recipe.trigger.params, function(fields, completed) 
     {
         var index=process.preventNextOccurrences.indexOf(recipe.name);
-        //console.log(ifttt.mode);
-        //console.log(recipe.mode);
+        console.log(ifttt.mode);
+        console.log(recipe.mode);
         if(index>-1)
             process.preventNextOccurrences.splice(index,1);
         else if(recipe.mode.indexOf(ifttt.mode)>-1 || recipe.mode.indexOf('*')>-1)
