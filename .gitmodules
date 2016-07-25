@@ -52,3 +52,9 @@
 [submodule "modules/nexmo"]
 	path = modules/nexmo
 	url = git@github.com:domojs/lifttt-nexmo.git
+[submodule "modules/device"]
+	path = modules/device
+	url = git@github.com:domojs/lifttt-device.git
+[submodule "modules/thermostat"]
+	path = modules/thermostat
+	url = git@github.com:domojs/lifttt-thermostat.git

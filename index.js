@@ -1,4 +1,5 @@
 require('jnode/setup.js');
+var debug=$('debug')('ifttt:core');
 process.preventNextOccurrences=[];
 var channels={};
 global.ifttt={};
@@ -7,7 +8,7 @@ function loadChannel(path)
 	if(typeof(channels[path])=='undefined')
 		channels[path] = $.extend(require('./modules/'+path), {find:function(name, type){
 			type=type || 'trigger';
-		console.log('loading '+type+' '+name);
+		debug('loading '+type+' '+name);
 		var result= find(this[type+'s'], name); 
 		if(result && type=='trigger' && result.delegate)
 		{
@@ -70,23 +71,25 @@ var context=this;
 function that(fields, trigger, next)
 {
 	var params={};
-	//console.log(this.fields);
-	//console.log(fields);
 	var replace=function(obj, target)
 	{
-	    $.each(obj, function(index, item){
-    		if(typeof(item)=='string')
-    			target[index]=$('router/formatter.js')(item)(fields);
-    		else if(item instanceof Object)
-    		{
-    		    //console.log('recursive format on '+index);
-    		    replace(item, target[index]={});
-    		}
+	    if(obj)
+    	    $.each(obj, function(index, item){
+        		if(typeof(item)=='string')
+        			target[index]=$('router/formatter.js')(item)(fields);
+        		else if(item instanceof Object)
+        		    replace(item, target[index]={});
     	});
 	};
 	replace(this.fields, params)
-	console.log(params);
-	return this(params, trigger, next);
+	debug(params);
+	
+	return this(params, trigger, function(statusCode, e){
+	    if(statusCode==500)
+	        console.error(e);
+        else if(next)
+            next.apply(this, arguments);
+	});
 }
 
 var EventEmitter=$('events').EventEmitter;
@@ -112,9 +115,15 @@ function register(recipe){
 	var triggerChannel=loadChannel(recipe.trigger.path);
 	var actionChannel=loadChannel(recipe.action.path);
 	var action=actionChannel.find(recipe.action.name, 'action').delegate.call(actionChannel, recipe.action.params);
+	var condition=false;
+	if(recipe.condition)
+	{
+	    var conditionChannel=loadChannel(recipe.condition.path);
+	    condition=conditionChannel.find(recipe.condition.name, 'condition').evaluate.call(conditionChannel, recipe.condition.params);
+	}
 		
-    console.log(recipe.trigger.path);
-    console.log(recipe.trigger.name);
+    debug(recipe.trigger.path);
+    debug(recipe.trigger.name);
     if(typeof(recipe.mode)=='undefined')
         recipe.mode='*';
     if(typeof(recipe.mode)=='string')
@@ -124,12 +133,23 @@ function register(recipe){
 	trigger.when.call(triggerChannel, recipe.trigger.params, function(fields, completed) 
     {
         var index=process.preventNextOccurrences.indexOf(recipe.name);
-        console.log(ifttt.mode);
-        console.log(recipe.mode);
+        debug(ifttt.mode);
+        debug(recipe.mode);
+        debug(condition);
         if(index>-1)
             process.preventNextOccurrences.splice(index,1);
-        else if(recipe.mode.indexOf(ifttt.mode)>-1 || recipe.mode.indexOf('*')>-1)
+        else if(!condition)
             that.call(action,fields,trigger, completed);
+        else
+        {
+            debug('calling condition');
+            debug(condition.toString());
+            condition(fields, function(result){
+                debug(result);
+                if(result)
+                    that.call(action,fields,trigger, completed);
+            })
+        }
     });
 }
 
@@ -137,4 +157,4 @@ process.setMaxListeners(30);
 
 var recipes=require('./recipes.json');
 $.each(recipes, function(){ if(!this.disabled) register(this); });
-console.log('initialized');
+debug('initialized');
