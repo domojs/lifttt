@@ -1,5 +1,5 @@
 import * as akala from '@akala/server';
-import { organizer, Recipe } from './channel';
+import { organizer, Recipe } from '../channel';
 import { Client, Connection, SerializableObject } from '@akala/json-rpc-ws';
 import * as fs from 'fs';
 import { promisify } from 'util';
@@ -67,7 +67,7 @@ akala.injectWithNameAsync(['$agent.lifttt'], function (client: Client<Connection
         {
             return akala.map(recipes, function (recipe)
             {
-                return recipe
+                return recipe;
             }, true);
         }
     });

@@ -8,7 +8,7 @@
         "build:js:routes": "browserify -x @akala/client -x @akala/core dist/client/routes.js -o dist/routes.js",
         "build:js:tile": "browserify -x @akala/client -x @akala/core -i @domojs/theme-default/dist/tile dist/client/tile.js -o dist/tile.js",
         "prepublishOnly": "npm run build",
-        "build": "npm run build:js"
+        "build": "npm run build:js && build:js:routes && build:js:tile"
     },
     "repository": {
         "type": "git",
@@ -24,12 +24,18 @@
     "description": "",
     "types": "dist/server/index.d.ts",
     "dependencies": {
-        "@akala/server": "^2.0.27"
+        "@akala/server": "^2.0.27",
+        "@fortawesome/fontawesome-svg-core": "^1.2.0",
+        "@fortawesome/free-solid-svg-icons": "^5.1.0",
+        "@fortawesome/pro-light-svg-icons": "^5.1.0",
+        "uuid": "^3.3.0"
     },
     "peerDependencies": {
         "@domojs/theme-default": "^1.1.14"
     },
     "devDependencies": {
+        "@akala/client": "^2.0.41",
+        "@types/uuid": "^3.4.3",
         "@types/ws": "^5.1.2",
         "ws": "^5.2.1"
     }
