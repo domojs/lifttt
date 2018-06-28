@@ -10,9 +10,14 @@ akala.injectWithName(['$isModule', '$master', '$worker'], function (isModule: ak
         {
             // Called when all modules have been initialized
         });
+
+        worker.on('after-master', function ()
+        {
+            require('./lifttt');
+        });
+        
         master(__filename, './master');
 
-        require('./lifttt');
 
         akala.injectWithName([AssetRegistration.name], function (virtualasset: PromiseLike<AssetRegistration>)
         {
