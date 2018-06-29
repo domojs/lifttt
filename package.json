@@ -37,6 +37,8 @@
         "@akala/client": "^2.0.41",
         "@types/uuid": "^3.4.3",
         "@types/ws": "^5.1.2",
+        "@types/popper.js": "^1.11.0",
+        "popper.js": "^1.14.3",
         "ws": "^5.2.1"
     }
 }
