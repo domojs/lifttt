@@ -1,4 +1,9 @@
-import { Tile, addTile } from '@domojs/theme-default';
-import * as akala from '@akala/core';
+import '@akala/client';
+import '@domojs/theme-default/dist/tile';
 
-addTile({name:'Events', url:'@domojs/lifttt'})
+
+tiles.add({
+    text: 'Evennements',
+    icon: 'fas fa-bolt',
+    url: '/lifttt'
+});
