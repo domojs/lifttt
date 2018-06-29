@@ -13,7 +13,7 @@ akala.injectWithName(['$isModule', '$master', '$worker'], function (isModule: ak
 
         worker.on('after-master', function ()
         {
-            require('./lifttt');
+            require('./api');
         });
         
         master(__filename, './master');
