@@ -7,7 +7,8 @@ export interface Field
 {
     name: string;
     displayName?: string;
-    type: 'int' | 'string' | 'boolean';
+    type: 'int' | 'string' | 'boolean' | 'number' |
+    'int[]' | 'string[]' | 'boolean[]' | 'number[]';
 }
 
 export interface Recipe
