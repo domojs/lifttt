@@ -39,8 +39,8 @@
     ws "^5.0.0"
 
 "@akala/json-rpc-ws@^4.1.10", "@akala/json-rpc-ws@^4.1.11", "@akala/json-rpc-ws@^4.1.23":
-  version "4.1.23"
-  resolved "https://registry.yarnpkg.com/@akala/json-rpc-ws/-/json-rpc-ws-4.1.23.tgz#d790f2790b8daf78e7ed1fdfb4001d6349e566ad"
+  version "4.1.24"
+  resolved "https://registry.yarnpkg.com/@akala/json-rpc-ws/-/json-rpc-ws-4.1.24.tgz#8b890d4e05dbf01255997d02ae621d13fe0ddf18"
   dependencies:
     debug "^3.0.0"
     uuid "^3.0.0"
