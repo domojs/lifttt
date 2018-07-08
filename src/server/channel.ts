@@ -1,7 +1,7 @@
 import * as akala from '@akala/core';
 import * as jsonrpcws from '@akala/json-rpc-ws';
-import {IconName} from '@fortawesome/fontawesome-common-types';
-import {Readable } from 'stream';
+import { IconName } from '@fortawesome/fontawesome-common-types';
+import { Readable } from 'stream';
 
 export interface Field
 {
@@ -44,8 +44,8 @@ export var organizer = new akala.Api()
 
 
 export var channel = new akala.Api()
-    .clientToServerOneWay<{ name: string, fields: Field[], icon?: IconName, view: string }>()({ registerTrigger: true, registerAction: true, registerCondition: true })
-    .clientToServerOneWay<{ name: string, view: string, icon: IconName }>()({ registerChannel: true })
+    .clientToServerOneWay<{ name: string, fields: Field[], icon?: IconName, view?: string }>()({ registerTrigger: true, registerAction: true, registerCondition: true })
+    .clientToServerOneWay<{ name: string, view?: string, icon: IconName }>()({ registerChannel: true })
     .serverToClient<{ name: string, fields: jsonrpcws.SerializableObject }, string>()({ executeTrigger: true })
     .serverToClientOneWay<{ name: string, fields: jsonrpcws.SerializableObject }>()({ executeCondition: true, executeAction: true })
     .clientToServerOneWay<{ id: string, data: jsonrpcws.SerializableObject }>()({ trigger: true })
