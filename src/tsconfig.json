@@ -3,6 +3,7 @@
     "compilerOptions": {
         "sourceMap": true,
         "target": "es6",
+        "declaration": true,
         "experimentalDecorators": true,
         "moduleResolution": "node",
         "module": "commonjs",
