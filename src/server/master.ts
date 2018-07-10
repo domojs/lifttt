@@ -2,7 +2,7 @@ import * as akala from '@akala/server';
 import * as lifttt from './channel'
 import { Connection } from '@akala/json-rpc-ws';
 
-@akala.server(lifttt.channel, { jsonrpcws: 'lifttt', rest: '/api/@domojs/lifttt' })
+@akala.server(lifttt.channel, { jsonrpcws: '/lifttt', rest: '/api/@domojs/lifttt' })
 class Channel
 {
     constructor() { }
