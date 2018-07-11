@@ -1,8 +1,9 @@
 import * as akala from '@akala/server';
 import { organizer, Recipe } from '../channel';
-import { Client, Connection, SerializableObject } from '@akala/json-rpc-ws';
+import { Client, Connection, SerializableObject, PayloadDataType } from '@akala/json-rpc-ws';
 import * as fs from 'fs';
 import { promisify } from 'util';
+import { each } from '../../../node_modules/@akala/core/dist/eachAsync';
 
 const writeFile = promisify(fs.writeFile);
 const readFile = promisify(fs.readFile);
@@ -28,17 +29,42 @@ akala.injectWithNameAsync(['$agent.lifttt'], function (client: Client<Connection
                     init = false;
                 });
         }
-    })
+    });
+    function interpolate(obj: string | number | SerializableObject | SerializableObject[], data)
+    {
+        if (typeof (obj) == 'object')
+        {
+            if (Array.isArray(obj))
+            {
+                return akala.map(obj, function (e, key)
+                {
+                    return interpolate(e, data);
+                });
+            }
+            else
+                return akala.map(obj, function (e, key)
+                {
+                    return interpolate(e, data);
+                });
+        }
+        else if (typeof (obj) == 'string')
+            return akala.Interpolate.build(obj)(data);
+        return obj;
+    }
+
     var server = akala.api.jsonrpcws(organizer).createServerProxy(client);
     var cl = akala.api.jsonrpcws(organizer).createClient(client, {
         trigger: async (param) =>
         {
-            var data = param.data;
-
+            var triggerData = param.data;
+            var conditionsData: PayloadDataType = null;
             if (recipes[param.id].condition)
-                await server.executeCondition({ name: recipes[param.id].condition.name, params: akala.extend(data, recipes[param.id].condition.params) });
+            {
+                var result = interpolate(recipes[param.id].condition.params, triggerData);
+                conditionsData = await server.executeCondition({ name: recipes[param.id].condition.name, params: { $triggerData: triggerData, ...result } });
+            }
 
-            await server.executeAction({ name: recipes[param.id].action.name, params: akala.extend(data, recipes[param.id].action.params) });
+            await server.executeAction({ name: recipes[param.id].action.name, params: { $triggerData: triggerData, $conditionsData: conditionsData, ...interpolate(recipes[param.id].condition.params, triggerData) } });
         },
         update(param)
         {

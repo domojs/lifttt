@@ -57,7 +57,7 @@ class Channel
 
     public async trigger(param)
     {
-        await akala.api.jsonrpcws(lifttt.channel).createClientProxy(this.triggerMap[param.id]).executeTrigger(param);
+        await akala.api.jsonrpcws(lifttt.organizer).createClientProxy(this.triggerMap[param.id]).trigger(param);
         return;
     }
 
