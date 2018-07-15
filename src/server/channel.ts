@@ -14,15 +14,30 @@ export interface Field
 export interface Recipe
 {
     name: string;
-    trigger: { name: string, params: jsonrpcws.SerializableObject };
-    action: { name: string, params: jsonrpcws.SerializableObject };
-    condition?: { name: string, params: jsonrpcws.SerializableObject }
+    trigger: { name: string, channel: string, params: jsonrpcws.SerializableObject };
+    action: { name: string, channel: string, params: jsonrpcws.SerializableObject };
+    condition?: { name: string, channel: string, params: jsonrpcws.SerializableObject };
 }
+
+export interface Program
+{
+    name: string;
+    channel: string;
+    fields: jsonrpcws.SerializableObject;
+}
+
+export interface Programs<T= {}>
+{
+    [key: string]: Program & T
+};
 
 export var organizer = new akala.Api()
     .clientToServer<{ name: string, params: jsonrpcws.SerializableObject }, string>()({ executeTrigger: true })
     .clientToServerOneWay<{ id: string }>()({ stopTrigger: true })
-    .serverToClientOneWay<{ id: string, data: jsonrpcws.SerializableObject }>()({ trigger: true })
+    .serverToClientOneWay<{
+        id
+        : string, data: jsonrpcws.SerializableObject
+    }>()({ trigger: true })
     .clientToServer<{ name: string, params: jsonrpcws.SerializableObject }, jsonrpcws.PayloadDataType>()({ executeCondition: true, executeAction: true })
     .serverToClient<null, Recipe[]>()({
         list: {
@@ -47,21 +62,21 @@ export var organizer = new akala.Api()
 
 
 export var channel = new akala.Api()
-    .clientToServerOneWay<{ name: string, fields: Field[], icon?: IconName, view?: string }>()({ registerTrigger: true, registerAction: true, registerCondition: true })
+    .clientToServerOneWay<{ name: string, fields: Field[], icon?: IconName, iconLibrary?:string, view?: string }>()({ registerTrigger: true, registerAction: true, registerCondition: true })
     .clientToServerOneWay<{ name: string, view?: string, icon: IconName }>()({ registerChannel: true })
     .serverToClientOneWay<{ id: string }>()({ stopTrigger: true })
     .serverToClient<{ name: string, fields: jsonrpcws.SerializableObject }, string>()({ executeTrigger: true })
     .serverToClientOneWay<{ name: string, fields: jsonrpcws.SerializableObject }>()({ executeCondition: true, executeAction: true })
     .clientToServerOneWay<{ id: string, data: jsonrpcws.SerializableObject }>()({ trigger: true })
 
-    .clientToServer<null, string[]>()({
+    .clientToServer<null, {name:string, icon:IconName, view:string}[]>()({
         listChannels: {
             rest: {
                 method: 'get', url: '/api/@domojs/lifttt/channels', type: 'json', param: 'query'
             }
         }
     })
-    .clientToServer<{ channel: string }, { name: string, fields: Field[] }[]>()({
+    .clientToServer<{ channel: string }, Programs>()({
         listTriggers: {
             rest: {
                 method: 'get', url: '/api/@domojs/lifttt/:name/triggers', type: 'json', param: {

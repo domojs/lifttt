@@ -3,7 +3,6 @@ import { organizer, Recipe } from '../channel';
 import { Client, Connection, SerializableObject, PayloadDataType } from '@akala/json-rpc-ws';
 import * as fs from 'fs';
 import { promisify } from 'util';
-import { each } from '../../../node_modules/@akala/core/dist/eachAsync';
 
 const writeFile = promisify(fs.writeFile);
 const readFile = promisify(fs.readFile);
@@ -11,7 +10,7 @@ const exists = promisify(fs.exists);
 
 akala.injectWithNameAsync(['$agent.lifttt'], function (client: Client<Connection>)
 {
-    var recipes: { [id: string]: Recipe } = {};
+    var recipes: { [id: string]: Recipe & { triggerId?: string } } = {};
     var init: boolean;
     exists('./recipes.json').then(async (exists) =>
     {
@@ -22,6 +21,7 @@ akala.injectWithNameAsync(['$agent.lifttt'], function (client: Client<Connection
             init = true;
             akala.eachAsync(recipeStore, async function (recipe, name, next)
             {
+                delete recipe.triggerId;
                 await cl.insert(recipe, init);
                 next();
             }, function ()
@@ -66,24 +66,29 @@ akala.injectWithNameAsync(['$agent.lifttt'], function (client: Client<Connection
 
             await server.executeAction({ name: recipes[param.id].action.name, params: { $triggerData: triggerData, $conditionsData: conditionsData, ...interpolate(recipes[param.id].condition.params, triggerData) } });
         },
-        update(param)
+        async update(param)
         {
             if (!(param.name in recipes))
                 return Promise.reject({ status: 404 });
 
+            await server.stopTrigger({ id: recipes[param.recipe.name].triggerId });
             if (param.name != param.recipe.name)
-                delete recipes[param.name]
+            {
+                delete recipes[param.name];
+            }
             recipes[param.recipe.name] = param.recipe;
-            return writeFile('./recipes.json', JSON.stringify(recipes));
+            await writeFile('./recipes.json', JSON.stringify(recipes));
+            recipes[param.recipe.name].triggerId = await server.executeTrigger(param.recipe.trigger);
         },
-        insert(recipe, init?: boolean)
+        async insert(recipe, init?: boolean)
         {
             if (recipe.name in recipes)
                 return Promise.reject({ status: 403 });
 
             recipes[recipe.name] = recipe;
             if (!init)
-                return writeFile('./recipes.json', JSON.stringify(recipes));
+                await writeFile('./recipes.json', JSON.stringify(recipes));
+            recipes[recipe.name].triggerId = await server.executeTrigger(recipe.trigger);
         },
         get(param)
         {
