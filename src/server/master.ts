@@ -34,6 +34,7 @@ class Channel
                 throw new Error(`Channel ${param.channel} does not exist`);
             if (!this.channels[param.channel].triggers[param.name])
                 throw new Error(`Trigger ${param.name} does not exist in channel ${param.channel}`);
+            akala.logger.verbose(`executing trigger ${param.name} for channel ${param.channel}`);
             connection = this.channels[param.channel].connection;
         }
         else if (!this.triggers[param.name])
@@ -53,6 +54,7 @@ class Channel
                 throw new Error(`Channel ${param.channel} does not exist`);
             if (!this.channels[param.channel].actions[param.name])
                 throw new Error(`Action ${param.name} does not exist in channel ${param.channel}`);
+            akala.logger.verbose(`executing action ${param.name} for channel ${param.channel}`);
             connection = this.channels[param.channel].connection;
         }
         else if (!this.actions[param.name])
@@ -71,12 +73,15 @@ class Channel
                 throw new Error(`Channel ${param.channel} does not exist`);
             if (!this.channels[param.channel].conditions[param.name])
                 throw new Error(`Condition ${param.name} does not exist in channel ${param.channel}`);
+            akala.logger.verbose(`executing condition ${param.name} for channel ${param.channel}`);
             connection = this.channels[param.channel].connection;
         }
         else if (!this.conditions[param.name])
             throw new Error(`Condition ${param.name} does not exist`);
         else
             connection = this.conditions[param.name].connection;
+
+
         return akala.api.jsonrpcws(lifttt.channel).createClientProxy(connection).executeCondition(param);
     }
 
@@ -90,6 +95,9 @@ class Channel
                     this.channels[i].triggers = {};
                 else if (this.channels[i].triggers[param.name])
                     throw new Error('a trigger named ' + param.name + ' already exists');
+
+                akala.logger.verbose(`registered trigger ${param.name} for channel ${this.channels[i].name}`);
+
                 this.channels[i].triggers[param.name] = { name: param.name, channel: this.channels[i].name, fields: param.fields };
                 break;
             }
@@ -105,11 +113,12 @@ class Channel
         {
             if (this.channels[i].connection == connection)
             {
-                
+
                 if (!this.channels[i].actions)
                     this.channels[i].actions = {};
                 else if (this.channels[i].actions[param.name])
                     throw new Error('an action named ' + param.name + ' already exists');
+                akala.logger.verbose(`registered action ${param.name} for channel ${this.channels[i].name}`);
                 this.channels[i].actions[param.name] = { name: param.name, channel: this.channels[i].name, fields: param.fields };
                 break;
             }
@@ -129,6 +138,8 @@ class Channel
                     this.channels[i].conditions = {};
                 else if (this.channels[i].conditions[param.name])
                     throw new Error('a condition named ' + param.name + ' already exists');
+                akala.logger.verbose(`registered condition ${param.name} for channel ${this.channels[i].name}`);
+
                 this.channels[i].conditions[param.name] = { name: param.name, channel: this.channels[i].name, fields: param.fields };
                 break;
             }
@@ -146,6 +157,8 @@ class Channel
             delete this.channels[param.name];
 
         })
+
+        akala.logger.verbose(`registered channel ${param.name}`);
 
         this.channels[param.name] = { connection, name: param.name, icon: param.icon, view: param.view, iconLibrary: param.iconLibrary };
     }

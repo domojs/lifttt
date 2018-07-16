@@ -62,6 +62,7 @@ akala.injectWithNameAsync(['$agent.lifttt', '$worker'], function (client: Client
         {
             var triggerData = param.data;
             var conditionsData: PayloadDataType = null;
+            akala.logger.verbose(`trigger ${param.id} received`);
             if (recipes[param.id].condition)
             {
                 var result = interpolate(recipes[param.id].condition.params, triggerData);
@@ -92,6 +93,7 @@ akala.injectWithNameAsync(['$agent.lifttt', '$worker'], function (client: Client
             recipes[recipe.name] = recipe;
             if (!init)
                 await writeFile('./recipes.json', JSON.stringify(recipes));
+            akala.logger.verbose(`requesting trigger ${recipe.trigger}`);
             recipes[recipe.name].triggerId = await server.executeTrigger(recipe.trigger);
         },
         get(param)
