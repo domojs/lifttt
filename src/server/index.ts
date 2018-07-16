@@ -12,10 +12,7 @@ akala.injectWithName(['$isModule', '$master', '$worker'], function (isModule: ak
             // Called when all modules have been initialized
         });
 
-        worker.on('ready', function ()
-        {
-            require('./api');
-        });
+        require('./api');
 
         master(__filename, './master');
 
