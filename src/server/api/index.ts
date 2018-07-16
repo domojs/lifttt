@@ -3,12 +3,13 @@ import { organizer, Recipe } from '../channel';
 import { Client, Connection, SerializableObject, PayloadDataType } from '@akala/json-rpc-ws';
 import * as fs from 'fs';
 import { promisify } from 'util';
+import { EventEmitter } from 'events';
 
 const writeFile = promisify(fs.writeFile);
 const readFile = promisify(fs.readFile);
 const exists = promisify(fs.exists);
 
-akala.injectWithNameAsync(['$agent.lifttt'], function (client: Client<Connection>)
+akala.injectWithNameAsync(['$agent.lifttt', '$worker'], function (client: Client<Connection>, worker: EventEmitter)
 {
     var recipes: { [id: string]: Recipe & { triggerId?: string } } = {};
     var init: boolean;
@@ -19,15 +20,18 @@ akala.injectWithNameAsync(['$agent.lifttt'], function (client: Client<Connection
             var recipeStore: { [id: string]: Recipe } = JSON.parse(await readFile('./recipes.json', { encoding: 'utf8' }));
             recipes = akala.extend(recipes, recipeStore);
             init = true;
-            akala.eachAsync(recipeStore, async function (recipe, name, next)
+            worker.on('ready', function ()
             {
-                delete recipe.triggerId;
-                await cl.insert(recipe, init);
-                next();
-            }, function ()
+                akala.eachAsync(recipeStore, async function (recipe, name, next)
                 {
-                    init = false;
-                });
+                    delete recipe.triggerId;
+                    await cl.insert(recipe, init);
+                    next();
+                }, function ()
+                    {
+                        init = false;
+                    });
+            })
         }
     });
     function interpolate(obj: string | number | SerializableObject | SerializableObject[], data)
