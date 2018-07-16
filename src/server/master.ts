@@ -17,7 +17,7 @@ class Channel
             conditions?: lifttt.Programs,
             icon: IconName,
             view: string,
-            iconLibrary:string,
+            iconLibrary: string,
         }
     } = {};
     private triggers: lifttt.Programs<{ connection: Connection }> = {};
@@ -86,7 +86,9 @@ class Channel
         {
             if (this.channels[i].connection == connection)
             {
-                if (this.channels[i].triggers[param.name])
+                if (!this.channels[i].triggers)
+                    this.channels[i].triggers = {};
+                else if (this.channels[i].triggers[param.name])
                     throw new Error('a trigger named ' + param.name + ' already exists');
                 this.channels[i].triggers[param.name] = { name: param.name, channel: this.channels[i].name, fields: param.fields };
                 break;
@@ -103,7 +105,10 @@ class Channel
         {
             if (this.channels[i].connection == connection)
             {
-                if (this.channels[i].actions[param.name])
+                
+                if (!this.channels[i].actions)
+                    this.channels[i].actions = {};
+                else if (this.channels[i].actions[param.name])
                     throw new Error('an action named ' + param.name + ' already exists');
                 this.channels[i].actions[param.name] = { name: param.name, channel: this.channels[i].name, fields: param.fields };
                 break;
@@ -120,7 +125,9 @@ class Channel
         {
             if (this.channels[i].connection == connection)
             {
-                if (this.channels[i].conditions[param.name])
+                if (!this.channels[i].conditions)
+                    this.channels[i].conditions = {};
+                else if (this.channels[i].conditions[param.name])
                     throw new Error('a condition named ' + param.name + ' already exists');
                 this.channels[i].conditions[param.name] = { name: param.name, channel: this.channels[i].name, fields: param.fields };
                 break;
@@ -140,7 +147,7 @@ class Channel
 
         })
 
-        this.channels[param.name] = { connection, name: param.name, icon: param.icon, view: param.view, iconLibrary:param.iconLibrary };
+        this.channels[param.name] = { connection, name: param.name, icon: param.icon, view: param.view, iconLibrary: param.iconLibrary };
     }
 
     public async trigger(param)
@@ -153,7 +160,7 @@ class Channel
     {
         return Promise.resolve(akala.map(this.channels, function (channel)
         {
-            return { name: channel.name, icon: channel.icon, view: channel.view, iconLibrary:channel.iconLibrary };
+            return { name: channel.name, icon: channel.icon, view: channel.view, iconLibrary: channel.iconLibrary };
         }, true));
     }
 
