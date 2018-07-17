@@ -24,7 +24,7 @@
     "description": "",
     "types": "dist/server/index.d.ts",
     "dependencies": {
-        "@akala/server": "^2.0.27",
+        "@akala/server": "^2.0.33",
         "@fortawesome/fontawesome-svg-core": "^1.2.0",
         "@fortawesome/free-solid-svg-icons": "^5.1.0",
         "@fortawesome/pro-light-svg-icons": "^5.1.0",

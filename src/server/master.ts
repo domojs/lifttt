@@ -3,6 +3,8 @@ import * as lifttt from './channel'
 import { Connection } from '@akala/json-rpc-ws';
 import { IconName } from '@fortawesome/fontawesome-common-types';
 
+const logger=akala.logger('domojs:lifttt');
+
 @akala.server(lifttt.channel, { jsonrpcws: '/lifttt', rest: '/api/@domojs/lifttt' })
 class Channel
 {
@@ -28,13 +30,13 @@ class Channel
     public async executeTrigger(param, connection: Connection)
     {
         var connection: Connection;
+        akala.logger.verbose(`executing trigger ${param.name} for channel ${param.channel}`);
         if (param.channel)
         {
             if (!this.channels[param.channel])
                 throw new Error(`Channel ${param.channel} does not exist`);
             if (!this.channels[param.channel].triggers[param.name])
                 throw new Error(`Trigger ${param.name} does not exist in channel ${param.channel}`);
-            akala.logger.verbose(`executing trigger ${param.name} for channel ${param.channel}`);
             connection = this.channels[param.channel].connection;
         }
         else if (!this.triggers[param.name])
@@ -48,13 +50,13 @@ class Channel
     public executeAction(param)
     {
         var connection: Connection;
+        akala.logger.verbose(`executing action ${param.name} for channel ${param.channel}`);
         if (param.channel)
         {
             if (!this.channels[param.channel])
                 throw new Error(`Channel ${param.channel} does not exist`);
             if (!this.channels[param.channel].actions[param.name])
                 throw new Error(`Action ${param.name} does not exist in channel ${param.channel}`);
-            akala.logger.verbose(`executing action ${param.name} for channel ${param.channel}`);
             connection = this.channels[param.channel].connection;
         }
         else if (!this.actions[param.name])
@@ -67,13 +69,13 @@ class Channel
     public executeCondition(param)
     {
         var connection: Connection;
+        akala.logger.verbose(`executing condition ${param.name} for channel ${param.channel}`);
         if (param.channel)
         {
             if (!this.channels[param.channel])
                 throw new Error(`Channel ${param.channel} does not exist`);
             if (!this.channels[param.channel].conditions[param.name])
                 throw new Error(`Condition ${param.name} does not exist in channel ${param.channel}`);
-            akala.logger.verbose(`executing condition ${param.name} for channel ${param.channel}`);
             connection = this.channels[param.channel].connection;
         }
         else if (!this.conditions[param.name])
