@@ -5,6 +5,8 @@ import * as fs from 'fs';
 import { promisify } from 'util';
 import { EventEmitter } from 'events';
 
+const logger = akala.logger('domojs:lifttt');
+
 const writeFile = promisify(fs.writeFile);
 const readFile = promisify(fs.readFile);
 const exists = promisify(fs.exists);
@@ -17,22 +19,21 @@ akala.injectWithNameAsync(['$agent.lifttt', '$worker'], function (client: Client
     {
         if (exists)
         {
+            logger.verbose('./recipes.json exists')
             var recipeStore: { [id: string]: Recipe } = JSON.parse(await readFile('./recipes.json', { encoding: 'utf8' }));
-            recipes = akala.extend(recipes, recipeStore);
             init = true;
-            worker.on('ready', function ()
+            akala.eachAsync(recipeStore, async function (recipe, name, next)
             {
-                akala.eachAsync(recipeStore, async function (recipe, name, next)
+                delete recipe.triggerId;
+                await cl.insert(recipe, init);
+                next();
+            }, function ()
                 {
-                    delete recipe.triggerId;
-                    await cl.insert(recipe, init);
-                    next();
-                }, function ()
-                    {
-                        init = false;
-                    });
-            })
+                    init = false;
+                });
         }
+        else
+            logger.info('./recipes.json does not exist');
     });
     function interpolate(obj: string | number | SerializableObject | SerializableObject[], data)
     {
