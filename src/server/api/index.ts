@@ -90,7 +90,7 @@ akala.injectWithNameAsync(['$agent.lifttt', '$worker'], function (client: Client
                 delete recipes[param.name];
             }
             recipes[param.recipe.name] = param.recipe;
-            await writeFile('./recipes.json', JSON.stringify(recipes));
+            await writeFile(recipeFile, JSON.stringify(recipes));
             recipes[param.recipe.name].triggerId = await server.executeTrigger(param.recipe.trigger);
         },
         async insert(recipe, init?: boolean)
@@ -100,7 +100,7 @@ akala.injectWithNameAsync(['$agent.lifttt', '$worker'], function (client: Client
 
             recipes[recipe.name] = recipe;
             if (!init)
-                await writeFile('./recipes.json', JSON.stringify(recipes));
+                await writeFile(recipeFile, JSON.stringify(recipes));
             akala.logger.verbose(`requesting trigger ${recipe.trigger}`);
             recipes[recipe.name].triggerId = await server.executeTrigger(recipe.trigger);
         },
