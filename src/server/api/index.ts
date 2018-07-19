@@ -16,26 +16,31 @@ akala.injectWithNameAsync(['$agent.lifttt', '$worker'], function (client: Client
 {
     var recipes: { [id: string]: Recipe & { triggerId?: string } } = {};
     var init: boolean;
-    var recipeFile = path.resolve(process.cwd(), './recipes.json');
+    var recipeFile = path.resolve(process.cwd(), '../../../recipes.json');
     exists(recipeFile).then(async (exists) =>
     {
         if (exists)
         {
-            logger.verbose(recipeFile+' exists')
+            logger.verbose(recipeFile + ' exists')
             var recipeStore: { [id: string]: Recipe } = JSON.parse(await readFile(recipeFile, { encoding: 'utf8' }));
+            logger.verbose(recipeStore);
             init = true;
-            akala.eachAsync(recipeStore, async function (recipe, name, next)
+            worker.on('ready', function ()
             {
-                delete recipe.triggerId;
-                await cl.insert(recipe, init);
-                next();
-            }, function ()
+                logger.verbose('initializing recipes')
+                akala.eachAsync(recipeStore, async function (recipe, name, next)
                 {
-                    init = false;
-                });
+                    delete recipe.triggerId;
+                    await cl.insert(recipe, init);
+                    next();
+                }, function ()
+                    {
+                        init = false;
+                    });
+            })
         }
         else
-            logger.info(recipeFile+' does not exist');
+            logger.info(recipeFile + ' does not exist');
     });
     function interpolate(obj: string | number | SerializableObject | SerializableObject[], data)
     {
