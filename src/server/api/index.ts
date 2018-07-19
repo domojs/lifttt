@@ -4,8 +4,9 @@ import { Client, Connection, SerializableObject, PayloadDataType } from '@akala/
 import * as fs from 'fs';
 import { promisify } from 'util';
 import { EventEmitter } from 'events';
+import * as path from 'path'
 
-const logger = akala.logger('domojs:lifttt');
+const logger = akala.logger('api');
 
 const writeFile = promisify(fs.writeFile);
 const readFile = promisify(fs.readFile);
@@ -15,12 +16,13 @@ akala.injectWithNameAsync(['$agent.lifttt', '$worker'], function (client: Client
 {
     var recipes: { [id: string]: Recipe & { triggerId?: string } } = {};
     var init: boolean;
-    exists('./recipes.json').then(async (exists) =>
+    var recipeFile = path.resolve(process.cwd(), './recipes.json');
+    exists(recipeFile).then(async (exists) =>
     {
         if (exists)
         {
-            logger.verbose('./recipes.json exists')
-            var recipeStore: { [id: string]: Recipe } = JSON.parse(await readFile('./recipes.json', { encoding: 'utf8' }));
+            logger.verbose(recipeFile+' exists')
+            var recipeStore: { [id: string]: Recipe } = JSON.parse(await readFile(recipeFile, { encoding: 'utf8' }));
             init = true;
             akala.eachAsync(recipeStore, async function (recipe, name, next)
             {
@@ -33,7 +35,7 @@ akala.injectWithNameAsync(['$agent.lifttt', '$worker'], function (client: Client
                 });
         }
         else
-            logger.info('./recipes.json does not exist');
+            logger.info(recipeFile+' does not exist');
     });
     function interpolate(obj: string | number | SerializableObject | SerializableObject[], data)
     {
