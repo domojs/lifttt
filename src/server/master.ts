@@ -27,6 +27,11 @@ class Channel
     private conditions: lifttt.Programs<{ connection: Connection }> = {};
     private triggerMap: { [id: string]: { connection: Connection, channel: string, trigger: string } } = {};
 
+    public stopTrigger(param)
+    {
+        return <any>akala.api.jsonrpcws(lifttt.channel).createClientProxy(this.triggerMap[param.id].connection).stopTrigger(param);
+    }
+
     public async executeTrigger(param, connection: Connection)
     {
         var connection: Connection;
