@@ -50,6 +50,7 @@ class Channel
             connection = this.triggers[param.name].connection;
         var id = await akala.api.jsonrpcws(lifttt.channel).createClientProxy(connection).executeTrigger(param);
         this.triggerMap[id] = { connection, channel: param.channel, trigger: param.name };
+        return id;
     }
 
     public executeAction(param)
