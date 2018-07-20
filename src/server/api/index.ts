@@ -31,7 +31,13 @@ akala.injectWithNameAsync(['$agent.lifttt', '$worker'], function (client: Client
                 akala.eachAsync(recipeStore, async function (recipe, name, next)
                 {
                     delete recipe.triggerId;
-                    await cl.insert(recipe, init);
+                    try{
+                        await cl.insert(recipe, init);
+                    }
+                    catch
+                    {
+                        setTimeout(cl.insert, 60000, recipe, true);
+                    }
                     next();
                 }, function ()
                     {
