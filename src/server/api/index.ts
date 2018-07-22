@@ -107,7 +107,7 @@ akala.injectWithNameAsync(['$agent.lifttt', '$worker'], function (client: Client
             recipes[recipe.name] = recipe;
             if (!init)
                 await writeFile(recipeFile, JSON.stringify(recipes));
-            akala.logger.verbose(`requesting trigger ${recipe.trigger}`);
+            logger.verbose(`requesting trigger ${recipe.trigger}`);
             recipes[recipe.name].triggerId = await server.executeTrigger(recipe.trigger);
         },
         get(param)
