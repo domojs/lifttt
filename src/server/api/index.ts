@@ -28,23 +28,26 @@ akala.injectWithNameAsync(['$agent.lifttt', '$worker'], function (client: Client
             init = true;
             worker.on('ready', function ()
             {
-                logger.verbose('initializing recipes')
-                akala.eachAsync(recipeStore, async function (recipe, name, next)
-                {
-                    delete recipe.triggerId;
-                    try
+                setTimeout(function(){
+
+                    logger.verbose('initializing recipes')
+                    akala.eachAsync(recipeStore, async function (recipe, name, next)
                     {
-                        await cl.insert(recipe, init);
-                    }
-                    catch
-                    {
-                        setTimeout(cl.insert, 60000, recipe, true);
-                    }
-                    next();
-                }, function ()
+                        delete recipe.triggerId;
+                        try
+                        {
+                            await cl.insert(recipe, init);
+                        }
+                        catch
+                        {
+                            setTimeout(cl.insert, 60000, recipe, true);
+                        }
+                        next();
+                    }, function ()
                     {
                         init = false;
                     });
+                }, 60000)
             })
         }
         else
