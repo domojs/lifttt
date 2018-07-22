@@ -14,7 +14,8 @@ const exists = promisify(fs.exists);
 
 akala.injectWithNameAsync(['$agent.lifttt', '$worker'], function (client: Client<Connection>, worker: EventEmitter)
 {
-    var recipes: { [id: string]: Recipe & { triggerId?: string } } = {};
+    var recipes: { [name: string]: Recipe & { triggerId?: string } } = {};
+    var triggerMap: { [id: string]: Recipe } = {};
     var init: boolean;
     var recipeFile = path.resolve(process.cwd(), '../../../recipes.json');
     exists(recipeFile).then(async (exists) =>
@@ -31,7 +32,8 @@ akala.injectWithNameAsync(['$agent.lifttt', '$worker'], function (client: Client
                 akala.eachAsync(recipeStore, async function (recipe, name, next)
                 {
                     delete recipe.triggerId;
-                    try{
+                    try
+                    {
                         await cl.insert(recipe, init);
                     }
                     catch
@@ -77,38 +79,45 @@ akala.injectWithNameAsync(['$agent.lifttt', '$worker'], function (client: Client
             var triggerData = param.data;
             var conditionsData: PayloadDataType = null;
             akala.logger.verbose(`trigger ${param.id} received`);
-            if (recipes[param.id].condition)
+            if (triggerMap[param.id].condition)
             {
-                var result = interpolate(recipes[param.id].condition.params, triggerData);
-                conditionsData = await server.executeCondition({ name: recipes[param.id].condition.name, params: { $triggerData: triggerData, ...result } });
+                var result = interpolate(triggerMap[param.id].condition.params, triggerData);
+                conditionsData = await server.executeCondition({ name: triggerMap[param.id].condition.name, params: { $triggerData: triggerData, ...result } });
             }
 
-            await server.executeAction({ name: recipes[param.id].action.name, params: { $triggerData: triggerData, $conditionsData: conditionsData, ...interpolate(recipes[param.id].condition.params, triggerData) } });
+            await server.executeAction({ name: triggerMap[param.id].action.name, params: { $triggerData: triggerData, $conditionsData: conditionsData, ...interpolate(triggerMap[param.id].condition.params, triggerData) } });
         },
         async update(param)
         {
             if (!(param.name in recipes))
-                return Promise.reject({ status: 404 });
+                return Promise.reject({ status: 404, message: 'recipe does not exist' });
 
-            await server.stopTrigger({ id: recipes[param.recipe.name].triggerId });
+            if (recipes[param.recipe.name].triggerId)
+            {
+                await server.stopTrigger({ id: recipes[param.recipe.name].triggerId });
+                delete triggerMap[recipes[param.recipe.name].triggerId];
+            }
             if (param.name != param.recipe.name)
             {
                 delete recipes[param.name];
+                param.recipe.name = param.name;
             }
-            recipes[param.recipe.name] = param.recipe;
+            recipes[param.name] = param.recipe;
             await writeFile(recipeFile, JSON.stringify(recipes));
             recipes[param.recipe.name].triggerId = await server.executeTrigger(param.recipe.trigger);
+            triggerMap[recipes[param.recipe.name].triggerId] = param.recipe;
         },
         async insert(recipe, init?: boolean)
         {
             if (recipe.name in recipes)
-                return Promise.reject({ status: 403 });
+                return Promise.reject({ status: 403, message: 'recipe already exists' });
 
             recipes[recipe.name] = recipe;
             if (!init)
                 await writeFile(recipeFile, JSON.stringify(recipes));
             logger.verbose(`requesting trigger ${recipe.trigger}`);
             recipes[recipe.name].triggerId = await server.executeTrigger(recipe.trigger);
+            triggerMap[recipes[recipe.name].triggerId] = recipe;
         },
         get(param)
         {
