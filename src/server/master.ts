@@ -32,7 +32,7 @@ class Channel
         return <any>akala.api.jsonrpcws(lifttt.channel).createClientProxy(this.triggerMap[param.id].connection).stopTrigger(param);
     }
 
-    public async executeTrigger(param, connection: Connection)
+    public async executeTrigger(param, initiatingConnection: Connection)
     {
         var connection: Connection;
         logger.verbose(`executing trigger ${param.name} for channel ${param.channel}`);
@@ -49,7 +49,7 @@ class Channel
         else
             connection = this.triggers[param.name].connection;
         var id = await akala.api.jsonrpcws(lifttt.channel).createClientProxy(connection).executeTrigger(param);
-        this.triggerMap[id] = { connection, channel: param.channel, trigger: param.name };
+        this.triggerMap[id] = { connection:initiatingConnection, channel: param.channel, trigger: param.name };
         return id;
     }
 

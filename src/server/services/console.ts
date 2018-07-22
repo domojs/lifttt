@@ -2,8 +2,6 @@ import * as akala from '@akala/server'
 import { channel } from '../channel'
 import { Connection, Client } from '@akala/json-rpc-ws';
 import * as fs from 'fs';
-import { promisify } from 'util'
-import * as uuid from 'uuid'
 
 akala.injectWithNameAsync(['$agent.lifttt'], async (lifttt: Client<Connection>) =>
 {
@@ -17,6 +15,7 @@ akala.injectWithNameAsync(['$agent.lifttt'], async (lifttt: Client<Connection>) 
                     break;
             }
         },
+
         executeCondition: function (condition)
         {
 
