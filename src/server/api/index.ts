@@ -28,7 +28,8 @@ akala.injectWithNameAsync(['$agent.lifttt', '$worker'], function (client: Client
             init = true;
             worker.on('ready', function ()
             {
-                setTimeout(function(){
+                setTimeout(function ()
+                {
 
                     logger.verbose('initializing recipes')
                     akala.eachAsync(recipeStore, async function (recipe, name, next)
@@ -44,9 +45,9 @@ akala.injectWithNameAsync(['$agent.lifttt', '$worker'], function (client: Client
                         }
                         next();
                     }, function ()
-                    {
-                        init = false;
-                    });
+                        {
+                            init = false;
+                        });
                 }, 60000)
             })
         }
@@ -88,7 +89,7 @@ akala.injectWithNameAsync(['$agent.lifttt', '$worker'], function (client: Client
                 conditionsData = await server.executeCondition({ name: triggerMap[param.id].condition.name, params: { $triggerData: triggerData, ...result } });
             }
 
-            await server.executeAction({ name: triggerMap[param.id].action.name, params: { $triggerData: triggerData, $conditionsData: conditionsData, ...interpolate(triggerMap[param.id].action.params, triggerData) } });
+            await server.executeAction({ name: triggerMap[param.id].action.name, params: { $triggerData: triggerData, $conditionsData: conditionsData, ...interpolate(triggerMap[param.id].action.params, { $triggerData: triggerData, $conditionsData: conditionsData }) } });
         },
         async update(param)
         {
