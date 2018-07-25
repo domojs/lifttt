@@ -86,10 +86,10 @@ akala.injectWithNameAsync(['$agent.lifttt', '$worker'], function (client: Client
             if (triggerMap[param.id].condition)
             {
                 var result = interpolate(triggerMap[param.id].condition.params, triggerData);
-                conditionsData = await server.executeCondition({ name: triggerMap[param.id].condition.name, params: { $triggerData: triggerData, ...result } });
+                conditionsData = await server.executeCondition({ name: triggerMap[param.id].condition.name, channel: triggerMap[param.id].condition.channel, params: { $triggerData: triggerData, ...result } });
             }
 
-            await server.executeAction({ name: triggerMap[param.id].action.name, params: { $triggerData: triggerData, $conditionsData: conditionsData, ...interpolate(triggerMap[param.id].action.params, { $triggerData: triggerData, $conditionsData: conditionsData }) } });
+            await server.executeAction({ name: triggerMap[param.id].action.name, channel: triggerMap[param.id].action.channel, params: interpolate(triggerMap[param.id].action.params, { $triggerData: triggerData, $conditionsData: conditionsData }) });
         },
         async update(param)
         {

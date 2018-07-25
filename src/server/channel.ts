@@ -35,7 +35,7 @@ export var organizer = new akala.Api()
     .clientToServer<{ name: string, params: jsonrpcws.SerializableObject }, string>()({ executeTrigger: true })
     .clientToServerOneWay<{ id: string }>()({ stopTrigger: true })
     .serverToClientOneWay<{ id: string, data: jsonrpcws.SerializableObject }>()({ trigger: true })
-    .clientToServer<{ name: string, params: jsonrpcws.SerializableObject }, jsonrpcws.PayloadDataType>()({ executeCondition: true, executeAction: true })
+    .clientToServer<{ name: string, channel?: string, params: jsonrpcws.SerializableObject }, jsonrpcws.PayloadDataType>()({ executeCondition: true, executeAction: true })
     .serverToClient<null, Recipe[]>()({
         list: {
             rest: { method: 'get', url: '/api/recipe', type: 'json', param: 'query' }
