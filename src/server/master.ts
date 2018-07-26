@@ -49,7 +49,7 @@ class Channel
         else
             connection = this.triggers[param.name].connection;
         var id = await akala.api.jsonrpcws(lifttt.channel).createClientProxy(connection).executeTrigger(param);
-        this.triggerMap[id] = { connection:initiatingConnection, channel: param.channel, trigger: param.name };
+        this.triggerMap[id] = { connection: initiatingConnection, channel: param.channel, trigger: param.name };
         return id;
     }
 
@@ -69,7 +69,7 @@ class Channel
             throw new Error(`Action ${param.name} does not exist`);
         else
             connection = this.actions[param.name].connection;
-        return akala.api.jsonrpcws(lifttt.channel).createClientProxy(connection).executeAction({name:param.name, fields:param.params});
+        return akala.api.jsonrpcws(lifttt.channel).createClientProxy(connection).executeAction(param);
     }
 
     public executeCondition(param)
@@ -90,7 +90,7 @@ class Channel
             connection = this.conditions[param.name].connection;
 
 
-        return akala.api.jsonrpcws(lifttt.channel).createClientProxy(connection).executeCondition({name:param.name, fields:param.params});
+        return akala.api.jsonrpcws(lifttt.channel).createClientProxy(connection).executeCondition(param);
     }
 
     public registerTrigger(param, connection)

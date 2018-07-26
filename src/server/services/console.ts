@@ -11,7 +11,7 @@ akala.injectWithNameAsync(['$agent.lifttt'], async (lifttt: Client<Connection>) 
             switch (action.name)
             {
                 case 'log':
-                    console.log(action.fields.message);
+                    console.log(action.params.message);
                     break;
             }
         },

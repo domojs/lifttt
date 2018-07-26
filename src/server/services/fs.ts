@@ -17,7 +17,7 @@ akala.injectWithNameAsync(['$agent.lifttt'], async (lifttt: Client<Connection>) 
             switch (action.name)
             {
                 case 'write':
-                    return writeFile(action.fields.file as string, action.fields.data);
+                    return writeFile(action.params.file as string, action.params.data);
             }
         },
         executeCondition: function (condition)
@@ -37,13 +37,13 @@ akala.injectWithNameAsync(['$agent.lifttt'], async (lifttt: Client<Connection>) 
             switch (trigger.name)
             {
                 case 'watch':
-                    var stat = await promisify(fs.stat)(trigger.fields['path'] as string);
+                    var stat = await promisify(fs.stat)(trigger.params['path'] as string);
                     if (stat.isDirectory() || stat.isFile())
                     {
                         var id = uuid();
-                        var watcher = fs.watch(trigger.fields['path'] as string, function (event, fileName)
+                        var watcher = fs.watch(trigger.params['path'] as string, function (event, fileName)
                         {
-                            if (!trigger.fields['event'] || trigger.fields['event'] == event)
+                            if (!trigger.params['event'] || trigger.params['event'] == event)
                                 server.trigger({ id: id, data: { path: fileName, mtime: new Date().toJSON() } });
                         });
                         registeredTriggers[id] = watcher;
