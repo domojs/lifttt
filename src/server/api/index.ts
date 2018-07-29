@@ -81,7 +81,7 @@ akala.injectWithNameAsync(['$agent.lifttt', '$worker'], function (client: Client
     var cl = akala.api.jsonrpcws(organizer).createClient(client, {
         trigger: async (param) =>
         {
-            var triggerData = param.data;
+            var triggerData = akala.extend({ $date: new Date() }, param.data);
             var conditionsData: PayloadDataType = null;
             akala.logger.verbose(`trigger ${param.id} received`);
             if (triggerMap[param.id].condition)
