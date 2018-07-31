@@ -26,6 +26,31 @@ class Channel
     private actions: lifttt.Programs<{ connection: Connection }> = {};
     private conditions: lifttt.Programs<{ connection: Connection }> = {};
     private triggerMap: { [id: string]: { connection: Connection, channel: string, trigger: string } } = {};
+    private organizers: { [id: string]: Connection } = {};
+
+    public registerOrganizer(param, connection: Connection)
+    {
+        this.organizers[param.id] = connection;
+    }
+
+    public update(param)
+    {
+        return akala.api.jsonrpcws(lifttt.organizer).createClientProxy(this.organizers[param.id]).update(param);
+    }
+
+    public insert(param)
+    {
+        return akala.api.jsonrpcws(lifttt.organizer).createClientProxy(this.organizers[param.id]).insert(param);
+    }
+
+    public list(param)
+    {
+        return akala.api.jsonrpcws(lifttt.organizer).createClientProxy(this.organizers[param.id]).list(param);
+    }
+    public get(param)
+    {
+        return akala.api.jsonrpcws(lifttt.organizer).createClientProxy(this.organizers[param.id]).get(param);
+    }
 
     public stopTrigger(param)
     {

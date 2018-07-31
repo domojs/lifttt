@@ -33,7 +33,7 @@ export interface Programs<T= {}>
 
 export var organizer = new akala.Api()
     .clientToServer<{ name: string, params: jsonrpcws.SerializableObject }, string>()({ executeTrigger: true })
-    .clientToServerOneWay<{ id: string }>()({ stopTrigger: true })
+    .clientToServerOneWay<{ id: string }>()({ stopTrigger: true, registerOrganizer: true })
     .serverToClientOneWay<{ id: string, data: jsonrpcws.SerializableObject }>()({ trigger: true })
     .clientToServer<{ name: string, channel?: string, params: jsonrpcws.SerializableObject }, jsonrpcws.PayloadDataType>()({ executeCondition: true, executeAction: true })
     .serverToClient<null, Recipe[]>()({
@@ -54,6 +54,26 @@ export var organizer = new akala.Api()
     .serverToClientOneWay<Recipe>()({
         insert: {
             rest: { method: 'insert', url: '/api/recipe', type: 'json', param: 'body' }
+        }
+    })
+    .clientToServer<null, Recipe[]>()({
+        list: {
+            rest: { method: 'get', url: '/api/@domojs/lifttt/recipe', type: 'json', param: 'query' }
+        }
+    })
+    .clientToServer<{ name: string }, Recipe>()({
+        get: {
+            rest: { method: 'get', url: '/api/@domojs/lifttt/recipe/:name', type: 'json', param: { name: 'route' } }
+        }
+    })
+    .clientToServerOneWay<{ name: string, recipe: Recipe }>()({
+        update: {
+            rest: { method: 'update', url: '/api/@domojs/lifttt/recipe/:name', type: 'json', param: { name: 'route', recipe: 'body' } }
+        }
+    })
+    .clientToServerOneWay<Recipe>()({
+        insert: {
+            rest: { method: 'insert', url: '/api/@domojs/lifttt/recipe', type: 'json', param: 'body' }
         }
     })
 
