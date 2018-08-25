@@ -1,8 +1,8 @@
-import * as akala from '@akala/server';
+import * as akala from '@akala/core';
 import { organizer, Recipe } from '../server/channel';
 import { Client, Connection, SerializableObject, PayloadDataType } from '@akala/json-rpc-ws';
 
-const logger = akala.logger('domojs:lifttt:api');
+const logger = akala.log('domojs:lifttt:api');
 const recipeFile = '@domojs/lifttt/recipes.json';
 
 export function interpolate(obj: string | number | SerializableObject | SerializableObject[], data)
