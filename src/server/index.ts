@@ -16,6 +16,7 @@ akala.injectWithName(['$isModule', '$master', '$worker'], function (isModule: ak
             // Called when all modules have been initialized
             require('./services/console');
             require('./services/fs');
+            require('./services/http');
         });
 
         require('./api');
