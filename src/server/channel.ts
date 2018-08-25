@@ -48,12 +48,12 @@ export var organizer = new akala.Api()
     })
     .serverToClientOneWay<{ name: string, recipe: Recipe }>()({
         update: {
-            rest: { method: 'update', url: '/api/recipe/:name', type: 'json', param: { name: 'route', recipe: 'body' } }
+            rest: { method: 'post', url: '/api/recipe/:name', type: 'json', param: { name: 'route', recipe: 'body' } }
         }
     })
     .serverToClientOneWay<Recipe>()({
         insert: {
-            rest: { method: 'insert', url: '/api/recipe', type: 'json', param: 'body' }
+            rest: { method: 'post', url: '/api/recipe', type: 'json', param: 'body' }
         }
     })
     .clientToServer<null, Recipe[]>()({
@@ -68,12 +68,12 @@ export var organizer = new akala.Api()
     })
     .clientToServerOneWay<{ name: string, recipe: Recipe }>()({
         update: {
-            rest: { method: 'update', url: '/api/@domojs/lifttt/recipe/:name', type: 'json', param: { name: 'route', recipe: 'body' } }
+            rest: { method: 'post', url: '/api/@domojs/lifttt/recipe/:name', type: 'json', param: { name: 'route', recipe: 'body' } }
         }
     })
     .clientToServerOneWay<Recipe>()({
         insert: {
-            rest: { method: 'insert', url: '/api/@domojs/lifttt/recipe', type: 'json', param: 'body' }
+            rest: { method: 'post', url: '/api/@domojs/lifttt/recipe', type: 'json', param: 'body' }
         }
     })
 
