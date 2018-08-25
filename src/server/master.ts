@@ -5,7 +5,6 @@ import { IconName } from '@fortawesome/fontawesome-common-types';
 
 const logger = akala.logger('domojs:lifttt');
 
-@akala.server(new akala.DualApi(lifttt.channel, lifttt.organizer), { jsonrpcws: '/lifttt', rest: '/api/@domojs/lifttt' })
 class Channel
 {
     constructor() { }
@@ -228,3 +227,5 @@ class Channel
         return Promise.resolve(channel.conditions);
     }
 }
+
+akala.buildServer(new akala.DualApi(lifttt.channel, lifttt.organizer), { jsonrpcws: '/lifttt', rest: '/api/@domojs/lifttt' }, new Channel())
