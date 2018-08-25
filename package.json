@@ -39,8 +39,7 @@
         "@domojs/theme-default": "^1.1.19",
         "@types/debug": "^0.0.30",
         "@types/uuid": "^3.4.3",
-        "@types/ws": "^5.1.2",
         "popper.js": "^1.14.3",
-        "ws": "^5.2.1"
+        "utf-8-validate": "^5.0.1",
     }
 }
