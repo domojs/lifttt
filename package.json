@@ -40,6 +40,6 @@
         "@types/debug": "^0.0.30",
         "@types/uuid": "^3.4.3",
         "popper.js": "^1.14.3",
-        "utf-8-validate": "^5.0.1",
+        "utf-8-validate": "^5.0.1"
     }
 }
