@@ -2,7 +2,7 @@ import * as akala from '@akala/core';
 import { organizer, Recipe } from '../server/channel';
 import { Client, Connection, SerializableObject, PayloadDataType } from '@akala/json-rpc-ws';
 
-const logger = akala.log('domojs:lifttt:api');
+const logger = { verbose: akala.log('verbose:domojs:lifttt:api'), info: akala.log('info:domojs:lifttt:api') }
 const recipeFile = '@domojs/lifttt/recipes.json';
 
 export function interpolate(obj: string | number | SerializableObject | SerializableObject[], data)
@@ -67,16 +67,16 @@ akala.injectWithNameAsync(['$agent.lifttt'], function (client: Client<Connection
         {
             var triggerData = akala.extend({ $date: new Date() }, param.data);
             var conditionsData: PayloadDataType = null;
-            akala.logger.verbose(`trigger ${param.id} received`);
+            logger.verbose(`trigger ${param.id} received`);
             if (triggerMap[param.id].condition)
             {
                 var result = interpolate(triggerMap[param.id].condition.params, triggerData);
                 conditionsData = await server.executeCondition({ name: triggerMap[param.id].condition.name, channel: triggerMap[param.id].condition.channel, params: { $triggerData: triggerData, ...result } });
             }
 
-            akala.logger.verbose(`interpolating: ${JSON.stringify(triggerMap[param.id].action.params)}`);
-            akala.logger.verbose(`triggerData: ${JSON.stringify(triggerData)}`);
-            akala.logger.verbose(`conditionsData: ${JSON.stringify(conditionsData)}`);
+            logger.verbose(`interpolating: ${JSON.stringify(triggerMap[param.id].action.params)}`);
+            logger.verbose(`triggerData: ${JSON.stringify(triggerData)}`);
+            logger.verbose(`conditionsData: ${JSON.stringify(conditionsData)}`);
             await server.executeAction({ name: triggerMap[param.id].action.name, channel: triggerMap[param.id].action.channel, params: interpolate(triggerMap[param.id].action.params, { $triggerData: triggerData, $conditionsData: conditionsData }) });
         },
         async update(param)
