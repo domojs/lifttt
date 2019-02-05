@@ -3,7 +3,7 @@ import { channel } from '../channel'
 import { Connection, Client } from '@akala/json-rpc-ws';
 import * as fs from 'fs';
 
-akala.injectWithNameAsync(['$agent.lifttt'], async (lifttt: Client<Connection>) =>
+akala.injectWithNameAsync(['$agent.api/@domojs/lifttt'], async (lifttt: Client<Connection>) =>
 {
     var cl = akala.api.jsonrpcws(channel).createClient(lifttt, {
         executeAction: function (action)
