@@ -228,4 +228,4 @@ class Channel
     }
 }
 
-akala.buildServer(new akala.DualApi(lifttt.channel, lifttt.organizer), { jsonrpcws: '/api/@domojs/lifttt', rest: '/api/@domojs/lifttt' }, new Channel())
+akala.buildServer(new akala.DualApi(lifttt.channel, lifttt.organizer), { jsonrpcws: '/api/lifttt', rest: '/api/@domojs/lifttt' }, new Channel())

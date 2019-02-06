@@ -27,7 +27,7 @@ export function interpolate(obj: string | number | SerializableObject | Serializ
     return obj;
 }
 
-akala.injectWithNameAsync(['$agent.api/@domojs/lifttt'], function (client: Client<Connection>)
+akala.injectWithNameAsync(['$agent.api/lifttt'], function (client: Client<Connection>)
 {
     var recipes: { [name: string]: Recipe & { triggerId?: string } } = {};
     var triggerMap: { [id: string]: Recipe } = {};

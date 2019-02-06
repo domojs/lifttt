@@ -1,6 +1,6 @@
 {
     "name": "@domojs/lifttt",
-    "version": "1.0.35",
+    "version": "1.0.36",
     "main": "dist/server/index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\"",
@@ -24,7 +24,7 @@
     "description": "",
     "types": "dist/server/index.d.ts",
     "dependencies": {
-        "@akala/server": "^2.0.33",
+        "@akala/server": "^2.1.6",
         "@fortawesome/fontawesome-svg-core": "^1.2.0",
         "@fortawesome/free-solid-svg-icons": "^5.1.0",
         "@fortawesome/pro-light-svg-icons": "^5.1.0",

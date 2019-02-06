@@ -5,7 +5,7 @@ import * as fs from 'fs';
 import { promisify } from 'util'
 import * as uuid from 'uuid'
 
-akala.injectWithNameAsync(['$agent.api/@domojs/lifttt'], async (lifttt: Client<Connection>) =>
+akala.injectWithNameAsync(['$agent.api/lifttt'], async (lifttt: Client<Connection>) =>
 {
     var registeredTriggers: { [triggerId: string]: fs.FSWatcher } = {};
 
