@@ -20,10 +20,10 @@
   optionalDependencies:
     showdown "^1.8.6"
 
-"@akala/core@^2.0.33":
-  version "2.0.59"
-  resolved "https://registry.yarnpkg.com/@akala/core/-/core-2.0.59.tgz#3a87786fe8119d29676e2dbf04f385d055c377ae"
-  integrity sha512-D5r5zLAGeXa3vBMtwAu9vr7Gt4SAts5Uyk0YPGNM7RcW57DAeYfvUNUCKBGYCpcUVRU6oZDKr4FhmBjsFMTReQ==
+"@akala/core@^2.0.66":
+  version "2.0.66"
+  resolved "https://registry.yarnpkg.com/@akala/core/-/core-2.0.66.tgz#f3b3fa07de2ced7d40fd1a19f02d01885c1b25ad"
+  integrity sha512-mwtZJdOpmDuK3cAR0uddNOOm8ai5rerAh8phwd4KJUx2K4XjNeDiZm4LQCzNW5tXC9VEJaGJDKKAZ7H1vNzOIg==
   dependencies:
     "@akala/json-rpc-ws" "^7.0.1"
     array-flatten "^2.1.1"
@@ -31,13 +31,13 @@
     debug "^4.1.1"
     es6-promise "^4.2.4"
     isomorphic-fetch "^2.2.1"
-    mock-require "^3.0.2"
+    mock-require "^3.0.3"
     orchestrator "^0.3.8"
     parseurl "^1.3.1"
-    path-to-regexp "^2.4.0"
+    path-to-regexp "^3.0.0"
     routington "^1.0.3"
     utils-merge "^1.0.0"
-    ws "^6.1.2"
+    ws "^6.1.3"
 
 "@akala/json-rpc-ws@^4.1.11":
   version "4.1.27"
@@ -58,11 +58,11 @@
     ws "^6.0.0"
 
 "@akala/server@^2.0.5", "@akala/server@^2.1.6":
-  version "2.1.6"
-  resolved "https://registry.yarnpkg.com/@akala/server/-/server-2.1.6.tgz#2b90ee1cfe7c65e75f4bbb7b61132c14aba1500e"
-  integrity sha512-CVCfvxFnFBZFR7PsYQoQMzWXObPIcwiWbE7E6NdmtSGHFaopUzraSWyJn7kwnzYN1BKb7Hk+fXaC6MqB2D8thA==
+  version "2.1.15"
+  resolved "https://registry.yarnpkg.com/@akala/server/-/server-2.1.15.tgz#5047f6cc84731fd939e2710cece4dff9e868e808"
+  integrity sha512-QOIN0Pic50r7IgQFiX5KqBRG+8xll+7895h3vLozaFbwZbOjvrGiH13qiyBbQqpR1XQHe5MIRrmsQIK06PhjaQ==
   dependencies:
-    "@akala/core" "^2.0.33"
+    "@akala/core" "^2.0.66"
     "@akala/json-rpc-ws" "^7.0.0"
     body-parser "^1.18.2"
     express "^4.16.2"
@@ -1343,7 +1343,7 @@ mixin-object@^2.0.1:
     for-in "^0.1.3"
     is-extendable "^0.1.1"
 
-mock-require@^3.0.2:
+mock-require@^3.0.3:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/mock-require/-/mock-require-3.0.3.tgz#ccd544d9eae81dd576b3f219f69ec867318a1946"
   integrity sha512-lLzfLHcyc10MKQnNUCv7dMcoY/2Qxd6wJfbqCcVk3LDb8An4hF6ohk5AztrvgKhJCqj36uyzi/p5se+tvyD+Wg==
@@ -1594,10 +1594,10 @@ path-to-regexp@0.1.7:
   resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-0.1.7.tgz#df604178005f522f15eb4490e7247a1bfaa67f8c"
   integrity sha1-32BBeABfUi8V60SQ5yR6G/qmf4w=
 
-path-to-regexp@^2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-2.4.0.tgz#35ce7f333d5616f1c1e1bfe266c3aba2e5b2e704"
-  integrity sha512-G6zHoVqC6GGTQkZwF4lkuEyMbVOjoBKAEybQUypI1WTkqinCOrq2x6U2+phkJ1XsEMTy4LjtwPI7HW+NVrRR2w==
+path-to-regexp@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-3.0.0.tgz#c981a218f3df543fa28696be2f88e0c58d2e012a"
+  integrity sha512-ZOtfhPttCrqp2M1PBBH4X13XlvnfhIwD7yCLx+GoGoXRPQyxGOTdQMpIzPSPKXAJT/JQrdfFrgdJOyAzvgpQ9A==
 
 pify@^3.0.0:
   version "3.0.0"
@@ -2468,10 +2468,10 @@ write-file-atomic@^2.0.0:
     imurmurhash "^0.1.4"
     signal-exit "^3.0.2"
 
-ws@^6.0.0, ws@^6.1.2:
-  version "6.1.3"
-  resolved "https://registry.yarnpkg.com/ws/-/ws-6.1.3.tgz#d2d2e5f0e3c700ef2de89080ebc0ac6e1bf3a72d"
-  integrity sha512-tbSxiT+qJI223AP4iLfQbkbxkwdFcneYinM2+x46Gx2wgvbaOMO36czfdfVUBRTHvzAMRhDd98sA5d/BuWbQdg==
+ws@^6.0.0, ws@^6.1.2, ws@^6.1.3:
+  version "6.1.4"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-6.1.4.tgz#5b5c8800afab925e94ccb29d153c8d02c1776ef9"
+  integrity sha512-eqZfL+NE/YQc1/ZynhojeV8q+H050oR8AZ2uIev7RU10svA9ZnJUddHcOUZTJLinZ9yEfdA2kSATS2qZK5fhJA==
   dependencies:
     async-limiter "~1.0.0"
 
