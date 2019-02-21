@@ -1,6 +1,6 @@
 {
     "name": "@domojs/lifttt",
-    "version": "1.0.38",
+    "version": "1.0.39",
     "main": "dist/server/index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\"",
@@ -35,9 +35,9 @@
     },
     "devDependencies": {
         "@akala-modules/core": "^1.1.3",
-        "@akala/client": "^2.0.41",
+        "@akala/client": "^2.0.74",
         "@domojs/theme-default": "^1.1.19",
-        "@types/debug": "^0.0.30",
+        "@types/debug": "^4.1.2",
         "@types/uuid": "^3.4.3",
         "popper.js": "^1.14.3",
         "utf-8-validate": "^5.0.1"
