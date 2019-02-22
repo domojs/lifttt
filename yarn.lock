@@ -13,11 +13,7 @@
     send "^0.16.1"
     uuid "^3.2.1"
 
-<<<<<<< HEAD
 "@akala/client@^2.0.0-0", "@akala/client@^2.0.71", "@akala/client@^2.0.75":
-=======
-"@akala/client@^2.0.0-0", "@akala/client@^2.0.41", "@akala/client@^2.0.71":
->>>>>>> 67af90ec01639918f80795699435edff4bb8d9d1
   version "2.0.75"
   resolved "https://registry.yarnpkg.com/@akala/client/-/client-2.0.75.tgz#7d6bbc1a20f8c6b721662c9804a92e50b2b8410b"
   integrity sha512-yjyWOMmxJXGqczyGJAbqM/Ly426chQo+V1RFk49o6ITAqqS289rNdsa9MAZ0N0xyRaLd7H1Gu+4yKX8rT5zMWA==
