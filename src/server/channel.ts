@@ -38,42 +38,42 @@ export var organizer = new akala.Api()
     .clientToServer<{ name: string, channel?: string, params: jsonrpcws.SerializableObject }, jsonrpcws.PayloadDataType>()({ executeCondition: true, executeAction: true })
     .serverToClient<null, Recipe[]>()({
         list: {
-            rest: { method: 'get', url: '/api/recipe', type: 'json', param: 'query' }
+            rest: { method: 'get', url: '/recipe', type: 'json', param: 'query' }
         }
     })
     .serverToClient<{ name: string }, Recipe>()({
         get: {
-            rest: { method: 'get', url: '/api/recipe/:name', type: 'json', param: { name: 'route' } }
+            rest: { method: 'get', url: '/recipe/:name', type: 'json', param: { name: 'route' } }
         }
     })
     .serverToClientOneWay<{ name: string, recipe: Recipe }>()({
         update: {
-            rest: { method: 'post', url: '/api/recipe/:name', type: 'json', param: { name: 'route', recipe: 'body' } }
+            rest: { method: 'post', url: '/recipe/:name', type: 'json', param: { name: 'route', recipe: 'body' } }
         }
     })
     .serverToClientOneWay<Recipe>()({
         insert: {
-            rest: { method: 'post', url: '/api/recipe', type: 'json', param: 'body' }
+            rest: { method: 'post', url: '/recipe', type: 'json', param: 'body' }
         }
     })
     .clientToServer<null, Recipe[]>()({
         list: {
-            rest: { method: 'get', url: '/api/@domojs/lifttt/recipe', type: 'json', param: 'query' }
+            rest: { method: 'get', url: '/recipe', type: 'json', param: 'query' }
         }
     })
     .clientToServer<{ name: string }, Recipe>()({
         get: {
-            rest: { method: 'get', url: '/api/@domojs/lifttt/recipe/:name', type: 'json', param: { name: 'route' } }
+            rest: { method: 'get', url: '/recipe/:name', type: 'json', param: { name: 'route' } }
         }
     })
     .clientToServerOneWay<{ name: string, recipe: Recipe }>()({
         update: {
-            rest: { method: 'post', url: '/api/@domojs/lifttt/recipe/:name', type: 'json', param: { name: 'route', recipe: 'body' } }
+            rest: { method: 'post', url: '/:name', type: 'json', param: { name: 'route', recipe: 'body' } }
         }
     })
     .clientToServerOneWay<Recipe>()({
         insert: {
-            rest: { method: 'post', url: '/api/@domojs/lifttt/recipe', type: 'json', param: 'body' }
+            rest: { method: 'post', url: '/recipe', type: 'json', param: 'body' }
         }
     })
 
@@ -89,28 +89,28 @@ export var channel = new akala.Api()
     .clientToServer<null, { name: string, icon: IconName, view: string }[]>()({
         listChannels: {
             rest: {
-                method: 'get', url: '/api/@domojs/lifttt/channels', type: 'json', param: 'query'
+                method: 'get', url: '/channels', type: 'json', param: 'query'
             }
         }
     })
     .clientToServer<{ channel: string }, Programs>()({
         listTriggers: {
             rest: {
-                method: 'get', url: '/api/@domojs/lifttt/:name/triggers', type: 'json', param: {
+                method: 'get', url: '/channel/:name/triggers', type: 'json', param: {
                     channel: 'route.name'
                 }
             }
         },
         listConditions: {
             rest: {
-                method: 'get', url: '/api/@domojs/lifttt/:name/conditions', type: 'json', param: {
+                method: 'get', url: '/channel/:name/conditions', type: 'json', param: {
                     channel: 'route.name'
                 }
             }
         },
         listActions: {
             rest: {
-                method: 'get', url: '/api/@domojs/lifttt/:name/actions', type: 'json', param: {
+                method: 'get', url: '/channel/:name/actions', type: 'json', param: {
                     channel: 'route.name'
                 }
             }

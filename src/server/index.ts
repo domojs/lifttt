@@ -17,9 +17,9 @@ akala.injectWithName(['$isModule', '$master', '$worker'], function (isModule: ak
             require('./services/console');
             require('./services/fs');
             require('./services/http');
+            require('./api');
         });
 
-        require('./api');
 
         master(__filename, './master');
 
