@@ -5,6 +5,7 @@ import * as fs from 'fs';
 import { promisify } from 'util';
 import { EventEmitter } from 'events';
 import * as path from 'path'
+import * as os from 'os'
 
 const logger = akala.logger('api');
 
@@ -139,4 +140,5 @@ akala.injectWithNameAsync(['$agent.api/lifttt', '$worker'], function (client: Cl
             }, true);
         }
     });
+    server.registerOrganizer({ id:os.hostname() });
 });

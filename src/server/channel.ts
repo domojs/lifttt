@@ -56,7 +56,12 @@ export var organizer = new akala.Api()
             rest: { method: 'post', url: '/recipe', type: 'json', param: 'body' }
         }
     })
-    .clientToServer<null, Recipe[]>()({
+    .clientToServer<void, string[]>()({
+        listOrganizers: {
+            rest: { method: 'get', url: '/', type: 'json' }
+        }
+    })
+    .clientToServer<{id:string}, Recipe[]>()({
         list: {
             rest: { method: 'get', url: '/recipe', type: 'json', param: 'query' }
         }

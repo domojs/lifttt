@@ -4,8 +4,9 @@ import { Connection } from '@akala/json-rpc-ws';
 import { IconName } from '@fortawesome/fontawesome-common-types';
 
 const logger = akala.logger('domojs:lifttt');
-
-class Channel
+var api = new akala.DualApi(lifttt.channel, lifttt.organizer)
+type Server = akala.api.ServerWithoutProxy<typeof api>
+class Channel implements Server
 {
     constructor() { }
 
@@ -29,6 +30,7 @@ class Channel
 
     public registerOrganizer(param, connection: Connection)
     {
+        logger.info(`registering organizer ${JSON.stringify(param)}`)
         this.organizers[param.id] = connection;
     }
 
