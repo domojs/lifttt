@@ -34,6 +34,11 @@ class Channel implements Server
         this.organizers[param.id] = connection;
     }
 
+    public listOrganizers()
+    {
+        return Object.keys(this.organizers);
+    }
+
     public update(param)
     {
         return akala.api.jsonrpcws(lifttt.organizer).createClientProxy(this.organizers[param.id]).update(param);
