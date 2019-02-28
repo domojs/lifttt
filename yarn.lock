@@ -14,9 +14,9 @@
     uuid "^3.3.2"
 
 "@akala/client@^2.0.71", "@akala/client@^2.0.75":
-  version "2.0.75"
-  resolved "https://registry.yarnpkg.com/@akala/client/-/client-2.0.75.tgz#7d6bbc1a20f8c6b721662c9804a92e50b2b8410b"
-  integrity sha512-yjyWOMmxJXGqczyGJAbqM/Ly426chQo+V1RFk49o6ITAqqS289rNdsa9MAZ0N0xyRaLd7H1Gu+4yKX8rT5zMWA==
+  version "2.0.76"
+  resolved "https://registry.yarnpkg.com/@akala/client/-/client-2.0.76.tgz#29bfa95702a2a388b1f103e76378c7a94789fd18"
+  integrity sha512-g0HcNRiLH7yYCPTu1JGB63/88S4zki5/TeOxrCXwORCmwXs1+yoGOgIDVLz1WqpGcLNd0PeC1lWF0gY3OTV02Q==
   optionalDependencies:
     showdown "^1.8.6"
 
