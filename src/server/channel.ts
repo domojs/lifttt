@@ -36,19 +36,19 @@ export var organizer = new akala.Api()
     .clientToServerOneWay<{ id: string }>()({ stopTrigger: true, registerOrganizer: true })
     .serverToClientOneWay<{ id: string, data: jsonrpcws.SerializableObject }>()({ trigger: true })
     .clientToServer<{ name: string, channel?: string, params: jsonrpcws.SerializableObject }, jsonrpcws.PayloadDataType>()({ executeCondition: true, executeAction: true })
-    .serverToClient<null, Recipe[]>()({
+    .serverToClient<void, Recipe[]>()({
         list: {
             rest: { method: 'get', url: '/recipe', type: 'json', param: 'query' }
         }
     })
     .serverToClient<{ name: string }, Recipe>()({
         get: {
-            rest: { method: 'get', url: '/recipe/:name', type: 'json', param: { name: 'route' } }
+            rest: { method: 'get', url: '/recipe/:name', type: 'json', param: { name: 'route.name' } }
         }
     })
     .serverToClientOneWay<{ name: string, recipe: Recipe }>()({
         update: {
-            rest: { method: 'post', url: '/recipe/:name', type: 'json', param: { name: 'route', recipe: 'body' } }
+            rest: { method: 'post', url: '/recipe/:name', type: 'json', param: { name: 'route.name', recipe: 'body' } }
         }
     })
     .serverToClientOneWay<Recipe>()({
@@ -61,19 +61,19 @@ export var organizer = new akala.Api()
             rest: { method: 'get', url: '/', type: 'json' }
         }
     })
-    .clientToServer<{id:string}, Recipe[]>()({
+    .clientToServer<{ id: string }, Recipe[]>()({
         list: {
-            rest: { method: 'get', url: '/recipe', type: 'json', param: 'query' }
+            rest: { method: 'get', url: '/recipe', type: 'json', param: { id: 'query.id' } }
         }
     })
-    .clientToServer<{ name: string }, Recipe>()({
+    .clientToServer<{ id: string, name: string }, Recipe>()({
         get: {
-            rest: { method: 'get', url: '/recipe/:name', type: 'json', param: { name: 'route' } }
+            rest: { method: 'get', url: '/recipe/:name', type: 'json', param: { id: 'query.id', name: 'route.name' } }
         }
     })
-    .clientToServerOneWay<{ name: string, recipe: Recipe }>()({
+    .clientToServerOneWay<{ id:string, name: string, recipe: Recipe }>()({
         update: {
-            rest: { method: 'post', url: '/:name', type: 'json', param: { name: 'route', recipe: 'body' } }
+            rest: { method: 'post', url: '/:name', type: 'json', param: { id:'query.id', name: 'route.name', recipe: 'body' } }
         }
     })
     .clientToServerOneWay<Recipe>()({

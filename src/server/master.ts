@@ -26,40 +26,49 @@ class Channel implements Server
     private actions: lifttt.Programs<{ connection: Connection }> = {};
     private conditions: lifttt.Programs<{ connection: Connection }> = {};
     private triggerMap: { [id: string]: { connection: Connection, channel: string, trigger: string } } = {};
-    private organizers: { [id: string]: Connection } = {};
+    private organizers: { [id: string]: Connection & { name: string } } = {};
 
-    public registerOrganizer(param, connection: Connection)
+    public registerOrganizer(param: { id: string }, connection: Connection)
     {
         logger.info(`registering organizer ${JSON.stringify(param)}`)
-        this.organizers[param.id] = connection;
+        if (this.organizers[param.id])
+            this.organizers[connection.id] = Object.assign(connection, { name: param.id });
+        else
+            this.organizers[param.id] = Object.assign(connection, { name: param.id });
     }
 
     public listOrganizers()
     {
+        logger.verbose(this.organizers)
         return Object.keys(this.organizers);
     }
 
     public update(param)
     {
+        logger.verbose(this.organizers)
         return akala.api.jsonrpcws(lifttt.organizer).createClientProxy(this.organizers[param.id]).update(param);
     }
 
     public insert(param)
     {
+        logger.verbose(this.organizers)
         return akala.api.jsonrpcws(lifttt.organizer).createClientProxy(this.organizers[param.id]).insert(param);
     }
 
     public list(param)
     {
-        return akala.api.jsonrpcws(lifttt.organizer).createClientProxy(this.organizers[param.id]).list(param);
+        logger.verbose(this.organizers)
+        return akala.api.jsonrpcws(lifttt.organizer).createClientProxy(this.organizers[param.id]).list();
     }
     public get(param)
     {
+        logger.verbose(this.organizers)
         return akala.api.jsonrpcws(lifttt.organizer).createClientProxy(this.organizers[param.id]).get(param);
     }
 
     public stopTrigger(param)
     {
+        logger.verbose(this.organizers)
         return <any>akala.api.jsonrpcws(lifttt.channel).createClientProxy(this.triggerMap[param.id].connection).stopTrigger(param);
     }
 
