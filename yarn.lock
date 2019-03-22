@@ -101,11 +101,11 @@
     "@fortawesome/fontawesome-common-types" "^0.2.17"
 
 "@fortawesome/pro-light-svg-icons@^5.1.0":
-  version "5.8.0"
-  resolved "https://npm.fontawesome.com/@fortawesome/pro-light-svg-icons/-/pro-light-svg-icons-5.8.0.tgz#d8a821b0065b7ba2f1da5b9d8465af160e1d6272"
-  integrity sha512-Axd0kKNQZ/0Yu7B+2UiXyPQti2S4qh4/J+mttFf24Zvo5WXQKd2DgW43rMv+3kk5vcHVaA5JQ5s5PizY2+7f2g==
+  version "5.8.1"
+  resolved "https://npm.fontawesome.com/@fortawesome/pro-light-svg-icons/-/pro-light-svg-icons-5.8.1.tgz#5e91a94ae57adbe540a55933cbfff9766e661373"
+  integrity sha512-/u2gy3bp4wwEx6ml+tjqQeK9BNbPElOwSUsDBEWbPvpJu+XxALdjcD15FRoaZ9YnpFO0+MvIImT+qgOEmKnRag==
   dependencies:
-    "@fortawesome/fontawesome-common-types" "^0.2.16"
+    "@fortawesome/fontawesome-common-types" "^0.2.17"
 
 "@snyk/dep-graph@1.4.0":
   version "1.4.0"
