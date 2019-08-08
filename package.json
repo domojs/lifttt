@@ -24,7 +24,7 @@
     "description": "",
     "types": "dist/server/index.d.ts",
     "dependencies": {
-        "@akala/server": "^2.1.16",
+        "@akala/server": "^3.0.11",
         "@fortawesome/fontawesome-common-types": "^0.2.19",
         "uuid": "^3.3.0"
     },
