@@ -31,7 +31,11 @@
   optionalDependencies:
     "@akala-modules/authentication" "^0.1.5"
 
+"@akala/client@^2.0.71", "@akala/client@^2.0.75", "@akala/client@^2.1.0":
   version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@akala/client/-/client-2.1.0.tgz#0c32d070d14f960e451b90ba81d447f993ae9cb4"
+  integrity sha512-KPmq9l4xx0ft9/UFjbGAZWo4WPQoTFvmmXbOrmnc6v+BkGDiHUi1pQr6Bbeg/Y7uM76DJBNmROYVUVip1y46zQ==
+  optionalDependencies:
     showdown "^1.8.6"
 
 "@akala/core@^2.0.96":
@@ -2677,14 +2681,6 @@ socks@~2.3.2:
     smart-buffer "4.0.2"
 
 source-map-support@^0.5.11, source-map-support@^0.5.13, source-map-support@^0.5.7:
-  version "0.5.13"
-  resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.5.13.tgz#31b24a9c2e73c2de85066c0feb7d44767ed52932"
-  integrity sha512-SHSKFHadjVA5oR4PPqhtAVdcBWwRYVd6g6cAXnIbRiIwc2EhPrTuKUBdSLvlEKyIP3GCf89fltvcZiP9MMFA1w==
-  dependencies:
-    buffer-from "^1.0.0"
-    source-map "^0.6.0"
-
-source-map-support@^0.5.13:
   version "0.5.13"
   resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.5.13.tgz#31b24a9c2e73c2de85066c0feb7d44767ed52932"
   integrity sha512-SHSKFHadjVA5oR4PPqhtAVdcBWwRYVd6g6cAXnIbRiIwc2EhPrTuKUBdSLvlEKyIP3GCf89fltvcZiP9MMFA1w==
