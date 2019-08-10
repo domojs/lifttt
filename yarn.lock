@@ -18,14 +18,14 @@
     passport-oauth2-client-password "^0.1.2"
     uuid "^3.3.2"
 
-"@akala-modules/core@^1.2.11", "@akala-modules/core@^1.2.12":
-  version "1.2.12"
-  resolved "https://registry.yarnpkg.com/@akala-modules/core/-/core-1.2.12.tgz#0efc6ea1c0c352ecb4dfb34aea8f5059d90d2f9f"
-  integrity sha512-/DewoqS2QuW1h5oySBDsTbxrbOxA2uQDF23LcYxiVesijgztQxAU8iesPRQD7LMnILWIyqlmJQZyjus2RBbIog==
+"@akala-modules/core@^1.2.16":
+  version "1.2.16"
+  resolved "https://registry.yarnpkg.com/@akala-modules/core/-/core-1.2.16.tgz#aefaf0f2d76b2b4054724b8b54c6faedc3af6af1"
+  integrity sha512-6zZwBb+FqNL+JnmukE/sSxxKmvZ0PlRzmYrQJK6jnBRYf8ojaBRJUl9OZqQ7WvB0Tt3ce2DdHuTJ6Mv7A8Y4mQ==
   dependencies:
     "@akala/client" "^2.1.0"
     "@akala/json-rpc-ws" "^7.0.2"
-    "@akala/server" "^3.0.15"
+    "@akala/server" "^3.0.18"
     send "^0.17.1"
     uuid "^3.3.2"
   optionalDependencies:
@@ -66,10 +66,29 @@
     uuid "^3.3.2"
     ws "^6.0.0"
 
-"@akala/server@^3.0.12", "@akala/server@^3.0.15", "@akala/server@^3.0.9":
+"@akala/server@^3.0.12", "@akala/server@^3.0.9":
   version "3.0.15"
   resolved "https://registry.yarnpkg.com/@akala/server/-/server-3.0.15.tgz#648fb11061031f5d94626a9672044ce6c0f43d37"
   integrity sha512-jNzSvG85oIpmCPM8KllhHyU07fcAIG7Q/lt/GrWOneUOwXvPuoWqJpvtCxEgyY7yanLjeITzhd7ww+R2SwxP4w==
+  dependencies:
+    "@akala/core" "^2.0.96"
+    "@akala/json-rpc-ws" "^7.0.2"
+    body-parser "^1.18.2"
+    express "^4.16.2"
+    on-finished "^2.3.0"
+    orchestrator "^0.3.8"
+    routington "^1.0.3"
+    send "^0.17.1"
+    sequencify "0.0.7"
+    source-map-support "^0.5.13"
+    underscore "^1.8.3"
+    ws "^7.1.1"
+    xml2js "^0.4.19"
+
+"@akala/server@^3.0.18":
+  version "3.0.18"
+  resolved "https://registry.yarnpkg.com/@akala/server/-/server-3.0.18.tgz#2a262dab24b4b9b067bbba5dfc0eb29be42e684f"
+  integrity sha512-IrDhlxteIRwr1wcmZQgj679aPZQZ7oc7y9lPsJYNJmxahe5c+pLDxFWmpGlOGyPHiA88iq9gQpoG6KRP7fnebg==
   dependencies:
     "@akala/core" "^2.0.96"
     "@akala/json-rpc-ws" "^7.0.2"
@@ -97,14 +116,12 @@
     sequelize "^5.12.3"
     uuid "^3.3.2"
 
-"@domojs/theme-default@^1.1.34":
-  version "1.1.34"
-  resolved "https://registry.yarnpkg.com/@domojs/theme-default/-/theme-default-1.1.34.tgz#c2b047c4ca9bd46bcabf86a8822687616d461b5a"
-  integrity sha512-FU4zUBkcH8MSidpu0edZDaRkiA/5TClymfaaxdpbHHOLKiiloRyFh3AhYzfGMPGu2sYO4N1iTXKCbvn2+ky+nA==
+"@domojs/theme-default@^1.1.39":
+  version "1.1.39"
+  resolved "https://registry.yarnpkg.com/@domojs/theme-default/-/theme-default-1.1.39.tgz#cd6564d72f4610308ff3df5d509ada809770d0df"
+  integrity sha512-OTk7F5qtAESo0Nm9eCjgD/3H0aggC8ptGQ5AAEUxp/wydJhssYCpF1Hx71JNOaWOosrSwUgC56IK0RI5fV372w==
   dependencies:
-    "@akala-modules/core" "^1.2.11"
     "@akala/client" "^2.0.71"
-    "@akala/server" "^3.0.15"
     "@fortawesome/fontawesome-common-types" "^0.2.14"
     bootstrap "^4.2.1"
     jquery "^3.3.1"
