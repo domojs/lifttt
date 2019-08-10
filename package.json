@@ -24,7 +24,7 @@
     "description": "",
     "types": "dist/server/index.d.ts",
     "dependencies": {
-        "@akala/server": "^3.0.13",
+        "@akala/server": "^3.0.15",
         "@fortawesome/fontawesome-common-types": "^0.2.19",
         "uuid": "^3.3.0"
     },
@@ -32,9 +32,9 @@
         "@domojs/theme-default": "^1.1.14"
     },
     "devDependencies": {
-        "@akala-modules/core": "^1.2.10",
+        "@akala-modules/core": "^1.2.12",
         "@akala/client": "^2.1.0",
-        "@domojs/theme-default": "^1.1.33",
+        "@domojs/theme-default": "^1.1.34",
         "@types/debug": "^4.1.5",
         "@types/uuid": "^3.4.3",
         "popper.js": "^1.14.3"

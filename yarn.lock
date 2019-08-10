@@ -18,20 +18,20 @@
     passport-oauth2-client-password "^0.1.2"
     uuid "^3.3.2"
 
-"@akala-modules/core@^1.2.10":
-  version "1.2.10"
-  resolved "https://registry.yarnpkg.com/@akala-modules/core/-/core-1.2.10.tgz#278b2705ed90b25dccb171de588607baa380cd14"
-  integrity sha512-PUqQVoP7m2+E2ib1KS6Djp07YuKjgTobQwFtPJ7JqaOukiRsbptrQKu0TFg4ySJuoQPSS36F1t7pkYGMR8PqPQ==
+"@akala-modules/core@^1.2.11", "@akala-modules/core@^1.2.12":
+  version "1.2.12"
+  resolved "https://registry.yarnpkg.com/@akala-modules/core/-/core-1.2.12.tgz#0efc6ea1c0c352ecb4dfb34aea8f5059d90d2f9f"
+  integrity sha512-/DewoqS2QuW1h5oySBDsTbxrbOxA2uQDF23LcYxiVesijgztQxAU8iesPRQD7LMnILWIyqlmJQZyjus2RBbIog==
   dependencies:
-    "@akala/client" "^2.0.75"
+    "@akala/client" "^2.1.0"
     "@akala/json-rpc-ws" "^7.0.2"
-    "@akala/server" "^3.0.9"
+    "@akala/server" "^3.0.15"
     send "^0.17.1"
     uuid "^3.3.2"
   optionalDependencies:
     "@akala-modules/authentication" "^0.1.5"
 
-"@akala/client@^2.0.71", "@akala/client@^2.0.75", "@akala/client@^2.1.0":
+"@akala/client@^2.0.71", "@akala/client@^2.1.0":
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/@akala/client/-/client-2.1.0.tgz#0c32d070d14f960e451b90ba81d447f993ae9cb4"
   integrity sha512-KPmq9l4xx0ft9/UFjbGAZWo4WPQoTFvmmXbOrmnc6v+BkGDiHUi1pQr6Bbeg/Y7uM76DJBNmROYVUVip1y46zQ==
@@ -66,10 +66,10 @@
     uuid "^3.3.2"
     ws "^6.0.0"
 
-"@akala/server@^3.0.12", "@akala/server@^3.0.13", "@akala/server@^3.0.9":
-  version "3.0.13"
-  resolved "https://registry.yarnpkg.com/@akala/server/-/server-3.0.13.tgz#2be14f0b0103a0b3c741f659b21ed11fc6b8528b"
-  integrity sha512-PGcGhjLaz+FrN4/RcOBVH8ZYLlIGSxT6oKokstwA4aHnYRZFa2lDlOzoH5idfriHUgg1LYvX5b3NWGcMTel2aw==
+"@akala/server@^3.0.12", "@akala/server@^3.0.15", "@akala/server@^3.0.9":
+  version "3.0.15"
+  resolved "https://registry.yarnpkg.com/@akala/server/-/server-3.0.15.tgz#648fb11061031f5d94626a9672044ce6c0f43d37"
+  integrity sha512-jNzSvG85oIpmCPM8KllhHyU07fcAIG7Q/lt/GrWOneUOwXvPuoWqJpvtCxEgyY7yanLjeITzhd7ww+R2SwxP4w==
   dependencies:
     "@akala/core" "^2.0.96"
     "@akala/json-rpc-ws" "^7.0.2"
@@ -97,19 +97,19 @@
     sequelize "^5.12.3"
     uuid "^3.3.2"
 
-"@domojs/theme-default@^1.1.33":
-  version "1.1.33"
-  resolved "https://registry.yarnpkg.com/@domojs/theme-default/-/theme-default-1.1.33.tgz#29cbe71fab69941cd1ea0b014b19a760f7f44924"
-  integrity sha512-mHxIcJg8YYAGyS7/kdwkr62wWeoQQyhnAo0vnUTAE9zh657KGP1I5HQkio6IZyw/fBAC4sPDP9DhQ6iDoJiKRw==
+"@domojs/theme-default@^1.1.34":
+  version "1.1.34"
+  resolved "https://registry.yarnpkg.com/@domojs/theme-default/-/theme-default-1.1.34.tgz#c2b047c4ca9bd46bcabf86a8822687616d461b5a"
+  integrity sha512-FU4zUBkcH8MSidpu0edZDaRkiA/5TClymfaaxdpbHHOLKiiloRyFh3AhYzfGMPGu2sYO4N1iTXKCbvn2+ky+nA==
   dependencies:
-    "@akala-modules/core" "^1.2.10"
+    "@akala-modules/core" "^1.2.11"
     "@akala/client" "^2.0.71"
-    "@akala/server" "^3.0.9"
+    "@akala/server" "^3.0.15"
     "@fortawesome/fontawesome-common-types" "^0.2.14"
     bootstrap "^4.2.1"
     jquery "^3.3.1"
     popper.js "^1.14.7"
-    snyk "^1.211.0"
+    snyk "^1.216.0"
 
 "@fortawesome/fontawesome-common-types@^0.2.14", "@fortawesome/fontawesome-common-types@^0.2.19":
   version "0.2.21"
@@ -120,6 +120,13 @@
   version "0.14.0"
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.14.0.tgz#9fb3a3cf3132328151f353de4632e01e52102bea"
   integrity sha512-9NET910DNaIPngYnLLPeg+Ogzqsi9uM4mSboU5y6p8S5DzMTVEsJZrawi+BoDNUVBa2DhJqQYUFvMDfgU062LQ==
+
+"@snyk/cli-interface@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@snyk/cli-interface/-/cli-interface-2.0.2.tgz#96dd229b3afda216a051b39a6ab520332d72db56"
+  integrity sha512-2/wTI7ML7tMy7TKk49dcVPAdiVtybILpW+dlaoUFDZKcYuthgJeWkiifQvx7fhDcmNNCjY/+6WlVYjLvVVvXKA==
+  dependencies:
+    tslib "^1.9.3"
 
 "@snyk/composer-lockfile-parser@1.0.3":
   version "1.0.3"
@@ -2337,9 +2344,9 @@ sequelize-pool@^2.3.0:
   integrity sha512-Ibz08vnXvkZ8LJTiUOxRcj1Ckdn7qafNZ2t59jYHMX1VIebTAOYefWdRYFt6z6+hy52WGthAHAoLc9hvk3onqA==
 
 sequelize@^5.12.3:
-  version "5.12.3"
-  resolved "https://registry.yarnpkg.com/sequelize/-/sequelize-5.12.3.tgz#5b170d7e6a79b010471814eace811d2144f59c13"
-  integrity sha512-BlhaqVKcPd4VzVNigtdq3/cL/ZHnRAZ132HnzD+/nBLDiS0aQ9qQ9aHyCPJfrO5NHnqxunxAiPyz9RqfGJARHQ==
+  version "5.13.0"
+  resolved "https://registry.yarnpkg.com/sequelize/-/sequelize-5.13.0.tgz#c600775bbd738d7e4ec1bbe05d29655615a5d734"
+  integrity sha512-AMPkiG+kZdsrSHL76GFVCNlzvy8pXp9GIiNF2UeAqG0t5b1BZTbU35HkK8vBbgbhvw6Dh4zErLam5IRXoijOOg==
   dependencies:
     bluebird "^3.5.0"
     cls-bluebird "^2.1.0"
@@ -2440,10 +2447,10 @@ snyk-config@^2.2.1:
     lodash "^4.17.15"
     nconf "^0.10.0"
 
-snyk-docker-plugin@1.25.1:
-  version "1.25.1"
-  resolved "https://registry.yarnpkg.com/snyk-docker-plugin/-/snyk-docker-plugin-1.25.1.tgz#3f97dda88adfac2e1938151372d07905767bc8a1"
-  integrity sha512-n/LfA7VXjPEcSz2ZfZonT/DPSC89Zs1/HD0inPFN4RLQT3WiQnjqJUXct+D0nWwEVfhLWNc+Y7PLcTjpnZ9R3Q==
+snyk-docker-plugin@1.29.1:
+  version "1.29.1"
+  resolved "https://registry.yarnpkg.com/snyk-docker-plugin/-/snyk-docker-plugin-1.29.1.tgz#4ae989e5084eef744b371f88b2890a8d971ab871"
+  integrity sha512-Mucc1rZ7l0U8Dykr5m6HPjau8b2H8JVtVaXGbKSZD6e/47JDJhudkgrWjsS5Yt/Zdp1weE3+4SguftFiVR971A==
   dependencies:
     debug "^4.1.1"
     dockerfile-ast "0.0.16"
@@ -2469,10 +2476,10 @@ snyk-go-plugin@1.11.0:
     tmp "0.0.33"
     tslib "^1.10.0"
 
-snyk-gradle-plugin@2.12.5:
-  version "2.12.5"
-  resolved "https://registry.yarnpkg.com/snyk-gradle-plugin/-/snyk-gradle-plugin-2.12.5.tgz#6da1c9135b4cee2d6cd32653e569a1f56977d173"
-  integrity sha512-AmiQQUL0nlY3SjWUSMSmmbp273ETJzsqvk1E8jf+G/Q3mRl9xZ6BkPMebweD/y5d/smoQmr6rKL57OG+OXoi3w==
+snyk-gradle-plugin@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/snyk-gradle-plugin/-/snyk-gradle-plugin-3.0.2.tgz#b4d41fce3c98014baf74fa1b18c6b3cc6f330ef5"
+  integrity sha512-9nyR03kHmePqBGaQiUeo3RD1YJ4qE5/V4tOmDQ8LNjHTQ54Xr8OXFC5xlJMV8FCtXrRXY0/WX8RMUPEUAm4c9g==
   dependencies:
     "@types/debug" "^4.1.4"
     chalk "^2.4.2"
@@ -2489,10 +2496,10 @@ snyk-module@1.9.1, snyk-module@^1.6.0, snyk-module@^1.9.1:
     debug "^3.1.0"
     hosted-git-info "^2.7.1"
 
-snyk-mvn-plugin@2.3.3:
-  version "2.3.3"
-  resolved "https://registry.yarnpkg.com/snyk-mvn-plugin/-/snyk-mvn-plugin-2.3.3.tgz#0368a73b94446564814808bda48b334a7e9a7cb8"
-  integrity sha512-NYFL+jtHfAJk+Jdyme4I8pTvg/wfoHgkOs1g1nFUEPTcpBb5mfqy7Q9hDJWvnfXY8M6P9aEqvO+bmCVgTQvySg==
+snyk-mvn-plugin@2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/snyk-mvn-plugin/-/snyk-mvn-plugin-2.4.0.tgz#b653050a4095feccffc1b9387dc3a3f2f1aa69da"
+  integrity sha512-Fmt6Mjx6zZz+4q6PnBkhuNGhEX++q/pKMI26ls4p3JPkx4KxBz89oncpkmf7P8YCkoaka8oHhtDEv/R4Z9LleQ==
   dependencies:
     lodash "^4.17.15"
     tslib "1.9.3"
@@ -2551,11 +2558,12 @@ snyk-policy@1.13.5:
     snyk-try-require "^1.3.1"
     then-fs "^2.0.0"
 
-snyk-python-plugin@1.10.2:
-  version "1.10.2"
-  resolved "https://registry.yarnpkg.com/snyk-python-plugin/-/snyk-python-plugin-1.10.2.tgz#e89548a47d4cfe98351604ed8a3372bfd9fbebbd"
-  integrity sha512-dLswHfVI9Ax8+Ia/onhv1p9S5y+Ie/oELOfpfNApbb0BPTJ5k1c2CQ7WcgQ5/nDRMUOgoKn4VTObaAGmD5or9A==
+snyk-python-plugin@^1.13.0:
+  version "1.13.1"
+  resolved "https://registry.yarnpkg.com/snyk-python-plugin/-/snyk-python-plugin-1.13.1.tgz#cc5659c1e56c670424bba8cd3444c07a3b5fa542"
+  integrity sha512-UaOe01YFw1v8whvd4XeOmt1J6a9Y6Ri6suEzuDeieRP5Pm5ihTAbRTDNSvnu7gqrWqrBXAIWDkPSiplUTg7/Dw==
   dependencies:
+    "@snyk/cli-interface" "^2.0.2"
     tmp "0.0.33"
 
 snyk-resolve-deps@4.3.0:
@@ -2617,10 +2625,10 @@ snyk-try-require@1.3.1, snyk-try-require@^1.1.1, snyk-try-require@^1.3.1:
     lru-cache "^4.0.0"
     then-fs "^2.0.0"
 
-snyk@^1.211.0:
-  version "1.213.0"
-  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.213.0.tgz#3792930a14db5443a22d0b92b4590de3254bc417"
-  integrity sha512-dgAF39ybEolgDmvC6J0TVR2dYRM82yVWPRcoGDWihSf/MtHskdhKyD0qf0mIls5exiFdN0p92jmL5ZroTgCHEA==
+snyk@^1.216.0:
+  version "1.216.0"
+  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.216.0.tgz#ff4403d9a7027b3b9e1e3b342fbd5103b8d63aa0"
+  integrity sha512-qjyoW7vcIHgmaF7AK8czecOviPiViFrGE4u5CYdi66NXMSWcoPrU8gBnJtgc1dDCPZhf7jpUYk9RX73Qjl2VFg==
   dependencies:
     "@snyk/dep-graph" "1.12.0"
     "@snyk/gemfile" "1.2.0"
@@ -2642,16 +2650,16 @@ snyk@^1.211.0:
     proxy-from-env "^1.0.0"
     semver "^6.0.0"
     snyk-config "^2.2.1"
-    snyk-docker-plugin "1.25.1"
+    snyk-docker-plugin "1.29.1"
     snyk-go-plugin "1.11.0"
-    snyk-gradle-plugin "2.12.5"
+    snyk-gradle-plugin "^3.0.2"
     snyk-module "1.9.1"
-    snyk-mvn-plugin "2.3.3"
+    snyk-mvn-plugin "2.4.0"
     snyk-nodejs-lockfile-parser "1.16.0"
     snyk-nuget-plugin "1.11.3"
     snyk-php-plugin "1.6.4"
     snyk-policy "1.13.5"
-    snyk-python-plugin "1.10.2"
+    snyk-python-plugin "^1.13.0"
     snyk-resolve "1.0.1"
     snyk-resolve-deps "4.3.0"
     snyk-sbt-plugin "2.6.1"
