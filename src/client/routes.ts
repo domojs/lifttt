@@ -3,8 +3,7 @@ import * as akala from '@akala/client';
 import { Tile } from '@domojs/theme-default/dist/tile'
 import './lifttt';
 
-
-akala.run(['$part', '$http', '$location', '$injector'], function (part: akala.Part, http: akala.Http, location: akala.LocationService, injector: akala.Injector)
+akala.module('@domojs/lifttt').run(['$part', '$http', '$location', '$injector'], function (part: akala.Part, http: akala.Http, location: akala.LocationService, injector: akala.Injector)
 {
     var api = akala.api.rest(new akala.DualApi(organizer, channel)).createServerProxy(new URL('/api/@domojs/lifttt', window.location.origin).toString());
 
