@@ -38,10 +38,10 @@
   optionalDependencies:
     showdown "^1.8.6"
 
-"@akala/core@^2.0.96":
-  version "2.0.96"
-  resolved "https://registry.yarnpkg.com/@akala/core/-/core-2.0.96.tgz#7e429b18b78b114a2bec7b8c8be06387ffd2e744"
-  integrity sha512-HknjgI7Wh+XUuyCfpfLRxu0ATWNZWI8huU52Qw0mJtr7sxj15znbe+e6vX0iz9FrBYlOGdXtmmS44Hs0kt9SwA==
+"@akala/core@^2.0.96", "@akala/core@^2.0.97":
+  version "2.0.97"
+  resolved "https://registry.yarnpkg.com/@akala/core/-/core-2.0.97.tgz#31aeaba2041862d0077b1c651a39b86e0d6669b5"
+  integrity sha512-QpRIbFoJekcWLKle+xjropzlFgublT1PUt6nqjwHefewvsNXKVN/4zPM6Oge7zygy5LohDvYLk3x0y5C1NMeYg==
   dependencies:
     "@akala/json-rpc-ws" "^7.0.1"
     array-flatten "^2.1.1"
@@ -66,31 +66,12 @@
     uuid "^3.3.2"
     ws "^6.0.0"
 
-"@akala/server@^3.0.12", "@akala/server@^3.0.9":
-  version "3.0.15"
-  resolved "https://registry.yarnpkg.com/@akala/server/-/server-3.0.15.tgz#648fb11061031f5d94626a9672044ce6c0f43d37"
-  integrity sha512-jNzSvG85oIpmCPM8KllhHyU07fcAIG7Q/lt/GrWOneUOwXvPuoWqJpvtCxEgyY7yanLjeITzhd7ww+R2SwxP4w==
+"@akala/server@^3.0.12", "@akala/server@^3.0.18", "@akala/server@^3.0.9":
+  version "3.0.19"
+  resolved "https://registry.yarnpkg.com/@akala/server/-/server-3.0.19.tgz#84d4a7c07e779677348c801d7381956758834437"
+  integrity sha512-JOQmRSRWsQicG41lUK57GRvif4iDvu/7gbfACjg3vT8X+9VNyI2O51+wb0lbieK5PDa/4sbo6lnQjoTsNqDAew==
   dependencies:
-    "@akala/core" "^2.0.96"
-    "@akala/json-rpc-ws" "^7.0.2"
-    body-parser "^1.18.2"
-    express "^4.16.2"
-    on-finished "^2.3.0"
-    orchestrator "^0.3.8"
-    routington "^1.0.3"
-    send "^0.17.1"
-    sequencify "0.0.7"
-    source-map-support "^0.5.13"
-    underscore "^1.8.3"
-    ws "^7.1.1"
-    xml2js "^0.4.19"
-
-"@akala/server@^3.0.18":
-  version "3.0.18"
-  resolved "https://registry.yarnpkg.com/@akala/server/-/server-3.0.18.tgz#2a262dab24b4b9b067bbba5dfc0eb29be42e684f"
-  integrity sha512-IrDhlxteIRwr1wcmZQgj679aPZQZ7oc7y9lPsJYNJmxahe5c+pLDxFWmpGlOGyPHiA88iq9gQpoG6KRP7fnebg==
-  dependencies:
-    "@akala/core" "^2.0.96"
+    "@akala/core" "^2.0.97"
     "@akala/json-rpc-ws" "^7.0.2"
     body-parser "^1.18.2"
     express "^4.16.2"
