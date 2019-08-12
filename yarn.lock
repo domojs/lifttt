@@ -31,10 +31,10 @@
   optionalDependencies:
     "@akala-modules/authentication" "^0.1.5"
 
-"@akala/client@^2.0.71", "@akala/client@^2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@akala/client/-/client-2.1.0.tgz#0c32d070d14f960e451b90ba81d447f993ae9cb4"
-  integrity sha512-KPmq9l4xx0ft9/UFjbGAZWo4WPQoTFvmmXbOrmnc6v+BkGDiHUi1pQr6Bbeg/Y7uM76DJBNmROYVUVip1y46zQ==
+"@akala/client@^2.1.0", "@akala/client@^2.1.4":
+  version "2.1.4"
+  resolved "https://registry.yarnpkg.com/@akala/client/-/client-2.1.4.tgz#116513e3b715436c91123853d13df7b6f86417e0"
+  integrity sha512-AevzdwiAH+pzOOWnj/DM5u1BE+4aDG6t8CMfpVRSuSekpFl+p4b1A32qpevR9PN+JsZACMAxojz+QZDXtYsr6A==
   optionalDependencies:
     showdown "^1.8.6"
 
@@ -117,11 +117,11 @@
     uuid "^3.3.2"
 
 "@domojs/theme-default@^1.1.39":
-  version "1.1.39"
-  resolved "https://registry.yarnpkg.com/@domojs/theme-default/-/theme-default-1.1.39.tgz#cd6564d72f4610308ff3df5d509ada809770d0df"
-  integrity sha512-OTk7F5qtAESo0Nm9eCjgD/3H0aggC8ptGQ5AAEUxp/wydJhssYCpF1Hx71JNOaWOosrSwUgC56IK0RI5fV372w==
+  version "1.1.45"
+  resolved "https://registry.yarnpkg.com/@domojs/theme-default/-/theme-default-1.1.45.tgz#658941bdd9dbec8944e6e1de57382f7bf0a2d00d"
+  integrity sha512-rqxnUqwBrjX8Z09xsvKuaLs1/ix6vOf0OA4deODej7nbDrvWcLXM+HF0pT7wwBpHYWSk/V3ajCjJg5DORmo7eQ==
   dependencies:
-    "@akala/client" "^2.0.71"
+    "@akala/client" "^2.1.4"
     "@fortawesome/fontawesome-common-types" "^0.2.14"
     bootstrap "^4.2.1"
     jquery "^3.3.1"
