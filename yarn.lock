@@ -2,13 +2,12 @@
 # yarn lockfile v1
 
 
-"@akala-modules/authentication@^0.1.5":
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/@akala-modules/authentication/-/authentication-0.1.5.tgz#19ca2cec694335b15994720368b914727b322b1a"
-  integrity sha512-qgXc0+f6oOjKD0nMmYz81sCxToR3PZ9neQdXH9VcAKpJhAccQD/ti2CutpL4Yvk+rT3q1706oTZ04FfYnvjXgQ==
+"@akala-modules/authentication@^0.1.7":
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/@akala-modules/authentication/-/authentication-0.1.7.tgz#1b377e088312618df37066b3f9036c41007431aa"
+  integrity sha512-ceFkwvvJEvpPcQRQhjyRL0+CLYWOXoPy/PrzO2n/C+Y0QITV5B4TiPuP9wELEWL9IyscEWh8VTkl2AEhicmGyw==
   dependencies:
-    "@akala/server" "^3.0.9"
-    "@akala/storage" "^1.0.10"
+    "@akala/storage" "^1.0.12"
     connect-ensure-login "^0.1.1"
     oauth2orize "^1.11.0"
     passport "^0.4.0"
@@ -19,17 +18,17 @@
     uuid "^3.3.2"
 
 "@akala-modules/core@^1.2.16":
-  version "1.2.16"
-  resolved "https://registry.yarnpkg.com/@akala-modules/core/-/core-1.2.16.tgz#aefaf0f2d76b2b4054724b8b54c6faedc3af6af1"
-  integrity sha512-6zZwBb+FqNL+JnmukE/sSxxKmvZ0PlRzmYrQJK6jnBRYf8ojaBRJUl9OZqQ7WvB0Tt3ce2DdHuTJ6Mv7A8Y4mQ==
+  version "1.2.17"
+  resolved "https://registry.yarnpkg.com/@akala-modules/core/-/core-1.2.17.tgz#cc29f89053ec2c855b902e2110841e17fdab641e"
+  integrity sha512-g4Ln2knNigk3ySYMIw20grOTnXOWyb4V1eu+ZglY24hdxiNQhXrLEY2Bip8x22X/MRhH2GIklrzqc23bGOZS1Q==
   dependencies:
-    "@akala/client" "^2.1.0"
+    "@akala/client" "^2.1.4"
     "@akala/json-rpc-ws" "^7.0.2"
-    "@akala/server" "^3.0.18"
+    "@akala/server" "^3.0.19"
     send "^0.17.1"
     uuid "^3.3.2"
   optionalDependencies:
-    "@akala-modules/authentication" "^0.1.5"
+    "@akala-modules/authentication" "^0.1.7"
 
 "@akala/client@^2.1.0", "@akala/client@^2.1.4":
   version "2.1.4"
@@ -66,7 +65,7 @@
     uuid "^3.3.2"
     ws "^6.0.0"
 
-"@akala/server@^3.0.12", "@akala/server@^3.0.18", "@akala/server@^3.0.9":
+"@akala/server@^3.0.12", "@akala/server@^3.0.18", "@akala/server@^3.0.19":
   version "3.0.19"
   resolved "https://registry.yarnpkg.com/@akala/server/-/server-3.0.19.tgz#84d4a7c07e779677348c801d7381956758834437"
   integrity sha512-JOQmRSRWsQicG41lUK57GRvif4iDvu/7gbfACjg3vT8X+9VNyI2O51+wb0lbieK5PDa/4sbo6lnQjoTsNqDAew==
@@ -85,7 +84,7 @@
     ws "^7.1.1"
     xml2js "^0.4.19"
 
-"@akala/storage@^1.0.10":
+"@akala/storage@^1.0.12":
   version "1.0.12"
   resolved "https://registry.yarnpkg.com/@akala/storage/-/storage-1.0.12.tgz#dfac384aa96c8798c15e9d3a5a4f2e0e8870f305"
   integrity sha512-0StTYdIgWy71oKmfB39F1qiFkEXA/nVS21tS+BUifyLxYsGcZWKZxUBe/fiwW0PXXs4yYKrQhRoaX+OIMiLo1g==
