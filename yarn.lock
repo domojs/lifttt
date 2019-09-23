@@ -37,10 +37,10 @@
   optionalDependencies:
     showdown "^1.8.6"
 
-"@akala/commands@^0.2.3":
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@akala/commands/-/commands-0.2.3.tgz#7ea57601fd58d0052d3bc1faac7b97b41e69f15d"
-  integrity sha512-Nz+t9XqPUuohkVpiVa9ctt8L+SvR1XYAl/I6BpxjMpNZ2lXxM7+4o32r3KDzYTrbV4xIix7lBgjLmI+0qKZ5uw==
+"@akala/commands@^0.2.4":
+  version "0.2.6"
+  resolved "https://registry.yarnpkg.com/@akala/commands/-/commands-0.2.6.tgz#49d0c8c61b71585740ac67ad70538baf347c9d46"
+  integrity sha512-Y1+CCGcSilWn1fWL/BhvOvCQaCqPulvWkhUPOQMuyk5xaVfAzsq7wRx5LOMpKu+e9iK27T3SZjE5+syUYCqNQw==
   dependencies:
     "@akala/core" "^2.0.97"
 
@@ -73,11 +73,11 @@
     ws "^6.0.0"
 
 "@akala/server@^3.0.12", "@akala/server@^3.0.19":
-  version "3.0.23"
-  resolved "https://registry.yarnpkg.com/@akala/server/-/server-3.0.23.tgz#2a7bafdcebd42b5af0765b30f8a222d993a9562d"
-  integrity sha512-XHrzztfnGURP6ts8U7z2wDC/YjpufxvCy0qNfvFCH+qmmFZhCjehSfJs3vhfStJc5ADqHlw6l3LfSXXMaW6rJQ==
+  version "3.0.25"
+  resolved "https://registry.yarnpkg.com/@akala/server/-/server-3.0.25.tgz#fcec843e0b994444f906490be2de8a6e4c0306b2"
+  integrity sha512-MJ6nBcniLrc/5PdZ5aduWO9DKAmpGE1ict3mhLrw4d+d5/nJXoMa9Tv0HM00LmbS3YLqBQAn4DzSaNnTegHaJA==
   dependencies:
-    "@akala/commands" "^0.2.3"
+    "@akala/commands" "^0.2.4"
     "@akala/core" "^2.0.98"
     "@akala/json-rpc-ws" "^7.0.2"
     body-parser "^1.18.2"
