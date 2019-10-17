@@ -31,9 +31,9 @@
     "@akala-modules/authentication" "^0.1.7"
 
 "@akala/client@^2.1.4":
-  version "2.1.4"
-  resolved "https://registry.yarnpkg.com/@akala/client/-/client-2.1.4.tgz#116513e3b715436c91123853d13df7b6f86417e0"
-  integrity sha512-AevzdwiAH+pzOOWnj/DM5u1BE+4aDG6t8CMfpVRSuSekpFl+p4b1A32qpevR9PN+JsZACMAxojz+QZDXtYsr6A==
+  version "2.1.5"
+  resolved "https://registry.yarnpkg.com/@akala/client/-/client-2.1.5.tgz#72fb346584ca3274b2a2bf8ce9ec02308346545e"
+  integrity sha512-R5pbPRZvr7aYhOxQlceBQvUGfF0/BQHm210f58IUpWqmUaAyQoWDk4NtNmZh78NMn/TkR7GhasHLzpLwP3CnLw==
   optionalDependencies:
     showdown "^1.8.6"
 
