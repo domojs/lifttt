@@ -31,9 +31,9 @@
     "@akala-modules/authentication" "^0.1.7"
 
 "@akala/client@^2.1.4", "@akala/client@^2.1.5":
-  version "2.1.46"
-  resolved "https://registry.yarnpkg.com/@akala/client/-/client-2.1.46.tgz#240bd55cdd3f6452df010f77e5a8297d62fcb621"
-  integrity sha512-5Bu2XlZtLO0pFROXi6mg2E+S0iXtaF7aZIlGnVzxdnnQVFqGeoVq0JSMQKlnkMA8o9q/4LFvhZ+ougWomel06Q==
+  version "2.1.51"
+  resolved "https://registry.yarnpkg.com/@akala/client/-/client-2.1.51.tgz#7ff8cfd8ea8887dd3dbdbf4eb1b25c6caec76421"
+  integrity sha512-x8Z/3YqL73hELvxH+we33+oB3G7AiEr9D/EM9Sg3Wbfq2hkc5iZoR4TocUnMwBT5hbPqDX+XJW5RhphoCHZmNg==
   optionalDependencies:
     "@popperjs/core" "^2.2.0"
     showdown "^1.8.6"
