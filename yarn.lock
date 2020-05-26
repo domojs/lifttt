@@ -140,9 +140,9 @@
     uuid "^3.3.2"
 
 "@domojs/theme-default@^1.1.45":
-  version "1.2.31"
-  resolved "https://registry.yarnpkg.com/@domojs/theme-default/-/theme-default-1.2.31.tgz#9dff4cb906cefa27ae830243c0b23024b7f8bf2f"
-  integrity sha512-eUFvMYfKbv3nuDvzRNvhldpl+akFKyXABZsQzdDY4Ko6rVBJ96fUtoKak22nLfsORckKP7QsxCgl7id2R+ZaBw==
+  version "1.2.35"
+  resolved "https://registry.yarnpkg.com/@domojs/theme-default/-/theme-default-1.2.35.tgz#cf71f4681fb40c60140ffabfdb9cf0f51f19e296"
+  integrity sha512-AOZaX1R5Eomkd1nbBEAq3MH91VOrY0UGWoZ4bcnZzBDmutVPuc5yoUuFjnkTvZA07SWrRb2sLeevKaLzuDg5Xg==
   dependencies:
     "@akala/client" "^2.1.63"
     "@akala/core" "^4.0.0"
