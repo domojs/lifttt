@@ -40,6 +40,16 @@
     "@popperjs/core" "^2.2.0"
     showdown "^1.8.6"
 
+"@akala/client@^3.1.2":
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/@akala/client/-/client-3.1.2.tgz#364e3d851f3179dbd8194bb512c2f5bbb4659df6"
+  integrity sha512-Dj4hW9pV48uhfhjDjC0Xl2CoqKxv0v8GQsppJxhau88RRne8+UvxvqoD89+d0dQw9zzHRX+rS5eSBGvoGd26ww==
+  dependencies:
+    reflect-metadata "^0.1.13"
+  optionalDependencies:
+    "@popperjs/core" "^2.2.0"
+    showdown "^1.8.6"
+
 "@akala/commands@^0.4.6":
   version "0.4.6"
   resolved "https://registry.yarnpkg.com/@akala/commands/-/commands-0.4.6.tgz#06aec84741f4a15b0691152061afa21451a3f713"
