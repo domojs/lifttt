@@ -40,10 +40,10 @@
     "@popperjs/core" "^2.2.0"
     showdown "^1.8.6"
 
-"@akala/client@^3.0.0":
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/@akala/client/-/client-3.1.2.tgz#364e3d851f3179dbd8194bb512c2f5bbb4659df6"
-  integrity sha512-Dj4hW9pV48uhfhjDjC0Xl2CoqKxv0v8GQsppJxhau88RRne8+UvxvqoD89+d0dQw9zzHRX+rS5eSBGvoGd26ww==
+"@akala/client@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@akala/client/-/client-4.0.0.tgz#155c4be968929224d3af7c1068f4e3f1f14738ee"
+  integrity sha512-7ApTvB8sbJGiN3HtsIFVFX0dgLcI1eFK85WYN9K3+edInO7i05DcP6H6gKsjvj0yTSWzQnmGbEdk/vZ9Tsghlw==
   dependencies:
     reflect-metadata "^0.1.13"
   optionalDependencies:
@@ -88,25 +88,6 @@
     orchestrator "^0.3.8"
     parseurl "^1.3.1"
     path-to-regexp "^6.1.0"
-    routington "^1.0.3"
-    utils-merge "^1.0.0"
-    ws "^7.2.1"
-
-"@akala/core@^5.0.0":
-  version "5.1.2"
-  resolved "https://registry.yarnpkg.com/@akala/core/-/core-5.1.2.tgz#3c82031245c86b3c3e38da4d87695dc3e86dadc3"
-  integrity sha512-JIc1KtaIhxqePC5ZaBSC84YivuEpgQU5T0/3hpk6GNZj6G6RqVoYXqauAB6q0atbaIXIYTZq2TH1pxlM+ye76Q==
-  dependencies:
-    "@akala/json-rpc-ws" "^9.1.7"
-    browser-process-hrtime "^1.0.0"
-    debug "^4.1.1"
-    es6-promise "^4.2.8"
-    isomorphic-fetch "^3.0.0"
-    mock-require "^3.0.3"
-    orchestrator "^0.3.8"
-    parseurl "^1.3.1"
-    path-to-regexp "^6.1.0"
-    reflect-metadata "^0.1.13"
     routington "^1.0.3"
     utils-merge "^1.0.0"
     ws "^7.2.1"
@@ -216,12 +197,12 @@
     uuid "^3.3.2"
 
 "@domojs/theme-default@^1.1.45":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@domojs/theme-default/-/theme-default-1.3.0.tgz#91bfd7f0b6e6ebf7da33a80e737611d1ba2116d2"
-  integrity sha512-Kvy8zKfHne/mI4DA68L1Nb2wjjK7/fWewvY0etuqI+1At3MhGacUiZWUO47TKgZ0/6EuVkCZ7VPXE3+Jor7cHg==
+  version "1.3.5"
+  resolved "https://registry.yarnpkg.com/@domojs/theme-default/-/theme-default-1.3.5.tgz#566f37a2b68c9135c6516762207877c441447538"
+  integrity sha512-GmuJfhWuIhtewISGC2ZPkYiO4ocC2NfXbpGURZiAwGon9s7QdfqkSxHhxG4upvmYuJ3PslACye/S4IXbDIXv5Q==
   dependencies:
-    "@akala/client" "^3.0.0"
-    "@akala/core" "^5.0.0"
+    "@akala/client" "^4.0.0"
+    "@akala/core" "^6.0.0"
     "@akala/server" "^5.0.0"
     "@fortawesome/fontawesome-common-types" "^0.2.28"
     "@fortawesome/fontawesome-svg-core" "^1.2.28"
@@ -230,7 +211,7 @@
     "@popperjs/core" "^2.4.0"
     bootstrap "^4.5.0"
     require-optional "^0.4.0"
-    sass-loader "^8.0.2"
+    sass-loader "^10.1.0"
     snyk "^1.332.1"
 
 "@fortawesome/fontawesome-common-types@^0.2.19", "@fortawesome/fontawesome-common-types@^0.2.28":
@@ -812,16 +793,6 @@ ajv@^6.1.0, ajv@^6.10.2, ajv@^6.12.3, ajv@^6.12.4, ajv@^6.12.5:
   version "6.12.6"
   resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.12.6.tgz#baf5a62e802b07d977034586f8c3baf5adf26df4"
   integrity sha512-j3fVLgvTo527anyYyJOGTYJbG+vnnQYvE0m5mmkc1TK+nxAppkCLMIL0aZ4dblVCNoGShhm+kzE4ZUykBoMg4g==
-  dependencies:
-    fast-deep-equal "^3.1.1"
-    fast-json-stable-stringify "^2.0.0"
-    json-schema-traverse "^0.4.1"
-    uri-js "^4.2.2"
-
-ajv@^6.12.0:
-  version "6.12.2"
-  resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.12.2.tgz#c629c5eced17baf314437918d2da88c99d5958cd"
-  integrity sha512-k+V+hzjm5q/Mr8ef/1Y9goCmlsK4I6Sm74teeyGvFk1XrOsbsKLjEdrvny42CZ+a8sXbk8KWpY/bDwS+FLL2UQ==
   dependencies:
     fast-deep-equal "^3.1.1"
     fast-json-stable-stringify "^2.0.0"
@@ -2169,15 +2140,6 @@ cliui@^5.0.0:
     string-width "^3.1.0"
     strip-ansi "^5.2.0"
     wrap-ansi "^5.1.0"
-
-clone-deep@^4.0.1:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/clone-deep/-/clone-deep-4.0.1.tgz#c19fd9bdbbf85942b4fd979c84dcf7d5f07c2387"
-  integrity sha512-neHB9xuzh/wk0dIHweyAXv2aPGZIVk3pLMe+/RNzINf17fe0OG96QroktYAUm7SM1PBnzTabaLboqqxDyMU+SQ==
-  dependencies:
-    is-plain-object "^2.0.4"
-    kind-of "^6.0.2"
-    shallow-clone "^3.0.0"
 
 clone-response@^1.0.2:
   version "1.0.2"
@@ -6450,7 +6412,7 @@ sass-graph@2.2.5:
     scss-tokenizer "^0.2.3"
     yargs "^13.3.2"
 
-sass-loader@^10.0.1:
+sass-loader@^10.0.1, sass-loader@^10.1.0:
   version "10.1.0"
   resolved "https://registry.yarnpkg.com/sass-loader/-/sass-loader-10.1.0.tgz#1727fcc0c32ab3eb197cda61d78adf4e9174a4b3"
   integrity sha512-ZCKAlczLBbFd3aGAhowpYEy69Te3Z68cg8bnHHl6WnSCvnKpbM6pQrz957HWMa8LKVuhnD9uMplmMAHwGQtHeg==
@@ -6460,17 +6422,6 @@ sass-loader@^10.0.1:
     neo-async "^2.6.2"
     schema-utils "^3.0.0"
     semver "^7.3.2"
-
-sass-loader@^8.0.2:
-  version "8.0.2"
-  resolved "https://registry.yarnpkg.com/sass-loader/-/sass-loader-8.0.2.tgz#debecd8c3ce243c76454f2e8290482150380090d"
-  integrity sha512-7o4dbSK8/Ol2KflEmSco4jTjQoV988bM82P9CZdmo9hR3RLnvNc0ufMNdMrB0caq38JQ/FgF4/7RcbcfKzxoFQ==
-  dependencies:
-    clone-deep "^4.0.1"
-    loader-utils "^1.2.3"
-    neo-async "^2.6.1"
-    schema-utils "^2.6.1"
-    semver "^6.3.0"
 
 sax@>=0.6.0, sax@^1.2.4:
   version "1.2.4"
@@ -6485,14 +6436,6 @@ schema-utils@^1.0.0:
     ajv "^6.1.0"
     ajv-errors "^1.0.0"
     ajv-keywords "^3.1.0"
-
-schema-utils@^2.6.1:
-  version "2.6.6"
-  resolved "https://registry.yarnpkg.com/schema-utils/-/schema-utils-2.6.6.tgz#299fe6bd4a3365dc23d99fd446caff8f1d6c330c"
-  integrity sha512-wHutF/WPSbIi9x6ctjGGk2Hvl0VOz5l3EKEuKbjPlB30mKZUzb9A5k9yEXRX3pwyqVLPvpfZZEllaFq/M718hA==
-  dependencies:
-    ajv "^6.12.0"
-    ajv-keywords "^3.4.1"
 
 schema-utils@^2.7.0, schema-utils@^2.7.1:
   version "2.7.1"
@@ -6651,13 +6594,6 @@ sha.js@^2.4.0, sha.js@^2.4.8:
   dependencies:
     inherits "^2.0.1"
     safe-buffer "^5.0.1"
-
-shallow-clone@^3.0.0:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/shallow-clone/-/shallow-clone-3.0.1.tgz#8f2981ad92531f55035b01fb230769a40e02efa3"
-  integrity sha512-/6KqX+GVUdqPuPPd2LxDDxzX6CAbjJehAAOKlNpqqUpAqPM6HeL8f+o3a+JsyGjn2lv0WY8UsTgUJjU9Ok55NA==
-  dependencies:
-    kind-of "^6.0.2"
 
 shebang-command@^1.2.0:
   version "1.2.0"
