@@ -33,7 +33,7 @@
     },
     "devDependencies": {
         "@akala-modules/core": "^1.2.17",
-        "@akala/client": "^2.1.4",
+        "@akala/client": "^4.0.0",
         "@domojs/theme-default": "^1.1.45",
         "@types/debug": "^4.1.5",
         "@types/uuid": "^3.4.3",
