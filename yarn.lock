@@ -60,13 +60,13 @@
     split2 "^3.1.1"
     uuid "^3.3.3"
 
-"@akala/commands@^0.7.4":
-  version "0.7.4"
-  resolved "https://registry.yarnpkg.com/@akala/commands/-/commands-0.7.4.tgz#cf964edda45e986a267ea6911cd7f569acaa8822"
-  integrity sha512-AIXn3PpIrHzx+XXCAQsd3Z1N8wqtD/TuPR2aXmgcZGgu0g/DfNTKrZDj+gFYqUjmxhGmp6iaLhUXjUECO6D6uw==
+"@akala/commands@^0.7.6":
+  version "0.7.6"
+  resolved "https://registry.yarnpkg.com/@akala/commands/-/commands-0.7.6.tgz#1199af22d9c32ea149ab371e18b65b7a2f31751d"
+  integrity sha512-aDbjYnfiD9BlnTp1wbV4CWqF05lryEC7bXf9f6nFRk8DB7mhxh8vnmmyWAQlyBQs9RfNVknTaq5QzEbZU2+R9w==
   dependencies:
-    "@akala/core" "^6.0.0"
-    "@akala/json-rpc-ws" "^9.1.7"
+    "@akala/core" "^6.0.2"
+    "@akala/json-rpc-ws" "^9.1.9"
     debug "^4.1.1"
     path-to-regexp "^6.1.0"
     reflect-metadata "^0.1.13"
@@ -92,12 +92,12 @@
     utils-merge "^1.0.0"
     ws "^7.2.1"
 
-"@akala/core@^6.0.0":
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/@akala/core/-/core-6.0.0.tgz#e9d790689d391ce821a7d4a81abd896b859fc462"
-  integrity sha512-Mtk2BN/vzngHL//9EENLNQupRqnQ4OSJrxiGuEsNlguARJKu19u4TxDtOgRXyaIctp/ZSaDusxMS/5NzX2TGrA==
+"@akala/core@^6.0.0", "@akala/core@^6.0.2":
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/@akala/core/-/core-6.0.2.tgz#399531a9025d2e6d721c9c8be70e3e5103537033"
+  integrity sha512-wfeC5MLdSWbyuCTXjIyTIaOqmo04HpHp8i6Kvc3lZcnzLzb7mWh1p63hGr9tbjKQlrazAC8QyI+nw4viVQM2Dg==
   dependencies:
-    "@akala/json-rpc-ws" "^9.1.7"
+    "@akala/json-rpc-ws" "^9.1.9"
     browser-process-hrtime "^1.0.0"
     debug "^4.1.1"
     es6-promise "^4.2.8"
@@ -120,10 +120,10 @@
     uuid "^3.3.2"
     ws "^6.0.0"
 
-"@akala/json-rpc-ws@^9.1.7":
-  version "9.1.7"
-  resolved "https://registry.yarnpkg.com/@akala/json-rpc-ws/-/json-rpc-ws-9.1.7.tgz#b3e742f2cf92dc0a63839ea5d4632fcce64371f7"
-  integrity sha512-deI8ofqOVChdQOZC5whedfWQX+4gbEQkxa6msDVAhuN4rzYPl0tKeYG1lqzLTNfE62dZ2sA+VtlK/PNExd3qng==
+"@akala/json-rpc-ws@^9.1.9":
+  version "9.1.9"
+  resolved "https://registry.yarnpkg.com/@akala/json-rpc-ws/-/json-rpc-ws-9.1.9.tgz#7fab9e621561eea3aced714d871c37ee9fffc293"
+  integrity sha512-aEC4rJTR26MucKe+mNbxW5Gl1Q05wFCYRikYq22zRfJpfbjTcn4VMHCpELn6bhSKquqcrVxbC3U6mU2ABtFCUQ==
   dependencies:
     debug "^4.1.1"
     reflect-metadata "^0.1.13"
@@ -150,14 +150,14 @@
     ws "^7.2.1"
     xml2js "^0.4.23"
 
-"@akala/server@^5.0.0":
-  version "5.0.4"
-  resolved "https://registry.yarnpkg.com/@akala/server/-/server-5.0.4.tgz#41135d7f42b99e4e85113e0ff1888f7eea82d329"
-  integrity sha512-laSjiTYpiEBzXit1vJKauTqQshyFbLpt7TlEZ6KTKXqVztN8dsneuW6nNsccjytoTRwogJINoVTAUSITuuyl/Q==
+"@akala/server@^5.0.0", "@akala/server@^5.0.6":
+  version "5.0.6"
+  resolved "https://registry.yarnpkg.com/@akala/server/-/server-5.0.6.tgz#594d8a9ff4d5fef141129e0381da4664b119f1cc"
+  integrity sha512-LclFrUf31VkJQajcfUOXvbdE7SR1bu5fLLWX0YC9dyXad8v2G6Z8tmlgGGMS+XkSmyFwXqlIeGJHaBzkYGjzsA==
   dependencies:
-    "@akala/commands" "^0.7.4"
-    "@akala/core" "^6.0.0"
-    "@akala/json-rpc-ws" "^9.1.7"
+    "@akala/commands" "^0.7.6"
+    "@akala/core" "^6.0.2"
+    "@akala/json-rpc-ws" "^9.1.9"
     body-parser "^1.18.2"
     chokidar "^3.3.1"
     clean-webpack-plugin "^3.0.0"
@@ -7065,15 +7065,7 @@ source-map-support@^0.4.15:
   dependencies:
     source-map "^0.5.6"
 
-source-map-support@^0.5.11, source-map-support@^0.5.16, source-map-support@^0.5.7:
-  version "0.5.16"
-  resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.5.16.tgz#0ae069e7fe3ba7538c64c98515e35339eac5a042"
-  integrity sha512-efyLRJDr68D9hBBNIPWFjhpFzURh+KJykQwvMyW5UiZzYwoF6l4YMMDIJJEyFWxWCqfyxLzz6tSfUFR+kXXsVQ==
-  dependencies:
-    buffer-from "^1.0.0"
-    source-map "^0.6.0"
-
-source-map-support@^0.5.19, source-map-support@~0.5.12:
+source-map-support@^0.5.11, source-map-support@^0.5.16, source-map-support@^0.5.19, source-map-support@^0.5.7, source-map-support@~0.5.12:
   version "0.5.19"
   resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.5.19.tgz#a98b62f86dcaf4f67399648c085291ab9e8fed61"
   integrity sha512-Wonm7zOCIJzBGQdB+thsPar0kYuCIzYvxZwlBa87yi/Mdjv7Tip2cyVbLj5o0cFPN4EVkuTwb3GDDyUx2DGnGw==
@@ -8109,12 +8101,7 @@ ws@^6.0.0:
   dependencies:
     async-limiter "~1.0.0"
 
-ws@^7.2.1:
-  version "7.2.1"
-  resolved "https://registry.yarnpkg.com/ws/-/ws-7.2.1.tgz#03ed52423cd744084b2cf42ed197c8b65a936b8e"
-  integrity sha512-sucePNSafamSKoOqoNfBd8V0StlkzJKL2ZAhGQinCfNQ+oacw+Pk7lcdAElecBF2VkLNZRiIb5Oi1Q5lVUVt2A==
-
-ws@^7.2.3:
+ws@^7.2.1, ws@^7.2.3:
   version "7.3.0"
   resolved "https://registry.yarnpkg.com/ws/-/ws-7.3.0.tgz#4b2f7f219b3d3737bc1a2fbf145d825b94d38ffd"
   integrity sha512-iFtXzngZVXPGgpTlP1rBqsUK82p9tKqsWRPg5L56egiljujJT3vGAYnHANvFxBieXrTFavhzhxW52jnaWV+w2w==
