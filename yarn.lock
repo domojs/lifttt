@@ -197,9 +197,9 @@
     uuid "^3.3.2"
 
 "@domojs/theme-default@^1.1.45":
-  version "1.3.6"
-  resolved "https://registry.yarnpkg.com/@domojs/theme-default/-/theme-default-1.3.6.tgz#fe08bd7c0d8536e3650b2c1a37dd8202276f2c02"
-  integrity sha512-5k/hmRCadup/ySIuJuPD5qAYLjVZyMZl3a3wCKEet908entPmmqkpLa6aQGjk8mfvHkbFr110B66B14eA72wRw==
+  version "1.3.7"
+  resolved "https://registry.yarnpkg.com/@domojs/theme-default/-/theme-default-1.3.7.tgz#3c5fcc31cfd79612de5d14efe7b570e4c99cf563"
+  integrity sha512-2bcaMdcyO1Octdl+1c4f74J5tCyXFAhXxbqetRiCRZmingCM7mtPI6PMa6YNn2QOL3k/6UK/+TKR1PFiyjmbsw==
   dependencies:
     "@akala/client" "^4.0.0"
     "@akala/core" "^6.0.0"
