@@ -40,10 +40,10 @@
     "@popperjs/core" "^2.2.0"
     showdown "^1.8.6"
 
-"@akala/client@^4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@akala/client/-/client-4.0.0.tgz#155c4be968929224d3af7c1068f4e3f1f14738ee"
-  integrity sha512-7ApTvB8sbJGiN3HtsIFVFX0dgLcI1eFK85WYN9K3+edInO7i05DcP6H6gKsjvj0yTSWzQnmGbEdk/vZ9Tsghlw==
+"@akala/client@^4.0.0", "@akala/client@^4.0.2":
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/@akala/client/-/client-4.0.2.tgz#ab014f97b56cb605db6d728aabb5421164206856"
+  integrity sha512-DyTszQDEvSsN86lJ6zIEyD0mwXvwfpYs+w3I4iF45ZUNKYo/jawoAIgDuB32f5CaUa4iysrp8QFqGrPFhEFA2A==
   dependencies:
     reflect-metadata "^0.1.13"
   optionalDependencies:
